@@ -1,0 +1,17 @@
+<ion-view>
+    <ion-header-bar>
+        <!-- Answer Button -->
+        <button data-ng-click="vm.answerQuestion()" class="button button-clear button-positive pull-right">
+            Answer
+        </button>
+    </ion-header-bar>
+    <ion-content>
+            <div class="list">
+                <!-- Question -->
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Security Question here</span>
+                    <input name="userAnswer" placeholder="Security Answer here" type="text" data-ng-model="vm.userAnswer" required data-ng-change="vm.answerChange()">
+                </label>
+            </div>
+    </ion-content>
+</ion-view>

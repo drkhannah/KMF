@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- bower stuff -->
+    <script src="lib/ng-currency/dist/ng-currency.min.js"></script>
+    <script src="lib/angular-messages/angular-messages.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- core -->
+    <script src="app/core/core.module.js"></script>
+
+    <!-- your app's js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/app.js"></script>
+
+    <!-- core -->
+    <script src="app/core/core.module.js"></script>
+
+    <!-- layout -->
+    <script src="app/layout/layout.module.js"></script>
+    <script src="app/layout/layout.js"></script>
+
+    <!-- signin -->
+    <script src="app/signin/signin.module.js"></script>
+    <script src="app/signin/signin.js"></script>
+    <script src="app/signin/securityQuestions.js"></script>
+    <script src="app/signin/terms.js"></script>
+
+
+    <!-- deposit -->
+    <script src="app/deposit/deposit.module.js"></script>
+    <script src="app/deposit/deposit.js"></script>
+    <script src="app/deposit/captureCheck.js"></script>
+    <script src="app/deposit/depositReview.js"></script>
+    <script src="app/deposit/depositCompleted.js"></script>
+
+
+    <!-- history -->
+    <script src="app/history/history.module.js"></script>
+    <script src="app/history/depositDetail.js"></script>
+    <script src="app/history/history.js"></script>
+
+    <!-- services -->
+    <script src="app/core/historyService.js"></script>
+    <script src="app/core/depositService.js"></script>
+    <script src="app/core/signinService.js"></script>
+
+
+  </head>
+
+  <body ng-app="app">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<ion-view hide-back-button="true"  can-swipe-back="false" view-title="{{vm.title}}">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-ios-close-empty" data-ng-click="vm.cancelDeposit()"></button>
+    </ion-nav-buttons>
+    <ion-content>
+
+        <div class="list">
+            <!-- Account Select -->
+            <label class="item item-input item-select">
+                <span class="input-label">Account</span>
+                <select name="account" data-ng-model="vm.selectedAccount" data-ng-change="vm.accountChange()">
+                    <option ng-repeat="account in vm.accounts">{{account.accountNumber}}</option>
+                </select>
+            </label>
+
+            <!-- Checks Total Amount -->
+            <label class="item item-input">
+                <span class="input-label">Total:</span>
+                <input data-ng-currency type="text" readonly data-ng-model="vm.checksTotalAmount" placeholder="Checks List Total">
+            </label>
+            <!-- Submitted Checks List -->
+            <div class="item item-divider" data-ng-show="vm.type === 'SINGLE'">
+                Check
+            </div>
+            <div class="item item-divider" data-ng-show="vm.type === 'MULTIPLE'">
+                Saved Checks
+            </div>
+            <ion-list>
+                <ion-item class="item item-thumbnail-right" data-ng-repeat="check in vm.checks">
+                    <h4>{{check.checkAmount | currency}}</h4>
+                    <ion-option-button data-ng-show="vm.type === 'MULTIPLE'" class="button-positive" data-ng-click="vm.deleteCheck($index)">Delete</ion-option-button>
+                    <ion-option-button class="button-assertive" data-ng-click="vm.retake(check, vm.selectedAccount)">Retake</ion-option-button>
+                    <img class="check-thumbnail-deposit-review" data-ng-src="{{check.checkFrontImage}}">
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+    <!-- Footer -->
+    <div class="bar bar-footer bar-stable">
+        <!-- Add Check Button -->
+        <button class="button button-clear button-positive" data-ng-show="vm.type === 'MULTIPLE'" data-ng-click="vm.addCheck()">
+            Add Check
+        </button>
+        <!-- Complete Deposit Button -->
+        <button class="button button-clear button-positive pull-right" data-ng-click="vm.completeDeposit()">
+            Complete Deposit
+        </button>
+    </div>
+</ion-view>

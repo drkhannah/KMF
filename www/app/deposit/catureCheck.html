@@ -1,0 +1,99 @@
+<ion-view hide-back-button="true"  can-swipe-back="false" view-title="{{vm.title}}">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-ios-close-empty" data-ng-click="vm.cancelDeposit()"></button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="captureCheckForm">
+            <!-- ERRORS -->
+            <div data-ng-show="captureCheckForm.account.$invalid && captureCheckFrom.$submited">
+                <div class="instruction-toast">Select Your Account</div>
+            </div>
+
+            <!--<div data-ng-show="captureCheckForm.depositAmount.$invalid && captureCheckFrom.$submited">-->
+                <!--<div class="instruction-toast">Enter Deposit Amount</div>-->
+            <!--</div>-->
+
+            <div data-ng-show="captureCheckForm.checkAmount.$invalid && captureCheckFrom.$submited">
+                <div class="instruction-toast">Enter Check Amount</div>
+            </div>
+
+            <div data-ng-show="vm.checkFrontImage === null && captureCheckFrom.$submited">
+                <div class="instruction-toast">Capture Check Front</div>
+            </div>
+
+            <div data-ng-show="vm.checkBackImage === null && captureCheckFrom.$submited">
+                <div class="instruction-toast">Capture Check Back</div>
+            </div>
+
+            <!-- End ERRORS -->
+
+            <div class="list">
+                <!-- Account Select -->
+                <label class="item item-input item-select" ng-cloak>
+                    <span class="input-label">Account</span>
+                    <select name="account" required data-ng-model="vm.selectedAccount" data-ng-change="vm.accountChange()">
+                        <option data-placeholder="Select Account" ng-repeat="account in vm.accounts">{{account.accountNumber}}</option>
+                    </select>
+                </label>
+
+                <!-- Deposit Amount
+                <label class="item item-input" ng-cloak>
+                    <span class="input-label">Deposit</span>
+                    <input data-ng-currency type="text" data-ng-required="true" name="depositAmount" data-ng-model="vm.amount" placeholder="Deposit Amount" data-ng-change="vm.depositAmountChange()">
+                </label>
+                -->
+
+                <!-- Check Amount -->
+                <label class="item item-input" ng-cloak>
+                    <span class="input-label">Amount</span>
+                    <input data-ng-currency type="text" data-ng-required="true" name="checkAmount" data-ng-model="vm.checkAmount" placeholder="Check Amount" data-ng-change="vm.checkAmountChange()">
+                </label>
+
+                    <!-- Scan Check Front Button -->
+                    <div class="card" data-ng-click="vm.miSnapCheckFront()" >
+                        <div class="item item-text-wrap">
+                            <div class="item item-icon-left">
+                                <h2 data-ng-hide="vm.checkFrontImage !== null">Capture Check Front</h2>
+                                <img class="capture-check-thumbnail" data-ng-show="vm.checkFrontImage !== '' && vm.checkFrontImage !== null" data-ng-src="{{vm.checkFrontImage}}"><!-- data:image/jpeg;base64, -->
+                                <i class="icon ion-camera" data-ng-hide="vm.checkFrontImage !== null || vm.frontCheckLoading"></i>
+                                <i class="icon ion-checkmark-round" data-ng-hide="vm.checkFrontImage === null || vm.frontCheckLoading"></i>
+                                <i class="icon" data-ng-show="vm.frontCheckLoading">
+                                    <ion-spinner class="spinner-positive" data-icon="lines"></ion-spinner>
+                                </i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scan Check Back Button -->
+                    <div class="card" data-ng-click="vm.miSnapCheckBack()">
+                        <div class="item item-text-wrap">
+                            <div class="item item-icon-left">
+                                <h2 data-ng-hide="vm.checkBackImage !== null">Capture Check Back</h2>
+                                <img class="capture-check-thumbnail" data-ng-show="vm.checkBackImage !== null" data-ng-src="{{vm.checkBackImage}}">
+                                <i class="icon icon-large ion-camera" data-ng-hide="vm.checkBackImage !== null || vm.backCheckLoading"></i>
+                                <i class="icon ion-checkmark-round" data-ng-hide="vm.checkBackImage === null || vm.backCheckLoading"></i>
+                                <i class="icon" data-ng-show="vm.backCheckLoading">
+                                    <ion-spinner class="spinner-positive" data-icon="lines"></ion-spinner>
+                                </i>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </form>
+    </ion-content>
+    <!-- Footer -->
+    <ion-footer-bar class="bar-stable">
+        <!-- Dont Save Check Button -->
+        <button ng-show="vm.type === 'MULTIPLE' && vm.checks.length >= 1" class="button button-clear button-positive" data-ng-click="vm.cancelCheck()">
+            Don't Save
+        </button>
+        <!-- Submit Check Button -->
+        <button data-ng-show="vm.type === 'SINGLE'" class="button button-clear button-positive pull-right" data-ng-click="vm.submitCheck()" data-ng-disabled="vm.selectedAccount === null || vm.checkAmount === null || vm.checkFrontImage === null || vm.checkBackImage === null">
+            Submit Check
+        </button>
+        <!-- Save Check Button -->
+        <button data-ng-show="vm.type === 'MULTIPLE'" class="button button-clear button-positive pull-right" data-ng-click="vm.submitCheck()" data-ng-disabled="vm.selectedAccount === null || vm.checkAmount === null || vm.checkFrontImage === null || vm.checkBackImage === null">
+            Save Check
+        </button>
+    </ion-footer-bar>
+</ion-view>
