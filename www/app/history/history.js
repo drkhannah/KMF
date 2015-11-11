@@ -13,6 +13,7 @@
     function stateProvider($stateProvider){
         $stateProvider
             .state('app.history', {
+                cache: false,
                 url: '/history',
                 views: {
                     'menuContent': {
@@ -41,7 +42,6 @@
         ////////////////
 
         function activate() {
-
         }
     }
 

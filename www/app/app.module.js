@@ -10,6 +10,7 @@
             /* Features */
             'app.deposit',
             'app.history',
+            'app.review',
             'app.signin',
             'app.layout'
         ])

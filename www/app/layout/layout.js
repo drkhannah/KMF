@@ -19,7 +19,7 @@
             });
 
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('/signin');
+        $urlRouterProvider.otherwise('/app');
     }
 
     /* @ngInject */
@@ -30,9 +30,10 @@
         vm.activate = activate;
         vm.signout = signout;
         vm.checkAccess = checkAccess;
-        vm.title = 'KMF';
+        vm.title = 'KTT mRDC';
         vm.depositLink = 'DEPOSIT';
         vm.historyLink = 'HISTORY';
+        vm.reviewLink = 'REVIEW';
         vm.signoutLink = 'SIGNOUT';
 
         activate();
@@ -47,7 +48,7 @@
         function checkAccess() {
             if(!signinService.access){
                 $state.go('signin');
-            } else if (signinService.role === 'DEPOSITOR'){
+            } else {
                 $state.go('app.deposit')
             }
         }

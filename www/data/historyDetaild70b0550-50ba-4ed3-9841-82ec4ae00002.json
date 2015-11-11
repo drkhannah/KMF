@@ -6,8 +6,8 @@
   "checksTotalAmount": 495.00,
   "time": "1:01 pm",
   "account": "xxxxxx5874",
-  "status": "REJECTED",
-  "description": "This deposit was rejected because Yada Yada Yada...",
+  "status": "REJECT",
+  "description": "This deposit was REJECT because Yada Yada Yada...",
   "type": "MULTIPLE",
   "checkFrontImage": "data:image/gif;base64,R0lGODlhMAAwALMMAP//AACAAIAAgAAA/wD//wD/AIAAAICAgMDAwICAAAAAAP///////wAAAAAAAAAAACH5BAEAAAwALAAAAAAwADAAAAT/kMlJq7046827/2AojmRpnmiqruykvK33LouyxNq8JEii4Bddb2gDumy7IS9x+AGFS+XBd2vpothps6qCKqVMaheJ/Ya1xZTCYDZrw2lUjV1evqfI1breexsSBnkqc3V+BwaBXF10YH+IBgEBMCx7jYeQkgcICJNqdFOOiJEKmggLpjVOJ3ugl6OlCwIHNLSdJGuhmKSbsbO0CAC1qiG4rpmbBwK0vwvJwTTDH7i6pckEyzQIBwPPCwAzxAYHr8gC193ZAt3fNnEda+O72ubeCwO/wLTsNJrRG/AveNEIluzXOh2aEoiRIa5AExsE7zXjpg9hDx+C3okqNYOguopITBJiXPYhVQAmHCGC5HdRB60Q0Fil9GZRoUsaJIT9OTCzWUskL0/oRGlK5E1FcmLu/IkNyNCjRiYIaxq1AjakVSngzMq1q9evYMN2jQAAOw==",
   "checks": [

@@ -13,6 +13,7 @@
     function stateProvider($stateProvider){
         $stateProvider
             .state('app.history-detail', {
+                cache: false,
                 url: '/history/:id',
                 views: {
                     'menuContent': {

@@ -28,8 +28,12 @@
           {{vm.depositLink}}
         </ion-item>
         <ion-item class="item item-icon-left" menu-close ui-sref="app.history">
-          <i class="icon ion-ios-book-outline"></i>
+          <i class="icon ion-ios-bookmarks"></i>
           {{vm.historyLink}}
+        </ion-item>
+        <ion-item class="item item-icon-left" menu-close ui-sref="app.review">
+          <i class="icon ion-eye"></i>
+          {{vm.reviewLink}}
         </ion-item>
         <div class="item item-divider">
           Account
@@ -37,6 +41,10 @@
         <ion-item class="item item-icon-left" ng-click="vm.signout()" ui-sref="app">
           <i class="icon ion-log-out"></i>
           {{vm.signoutLink}}
+        </ion-item>
+        <ion-item class="item item-icon-left" menu-close ui-sref="app.signin">
+          <i class="icon ion-log-in"></i>
+          Signin
         </ion-item>
       </ion-list>
     </ion-content>
