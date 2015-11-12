@@ -3,21 +3,119 @@ To customize the look and feel of Ionic, you can override the variables
 in ionic's _variables.scss file.
 
 For example, you might change some of the default colors:
+*/
 
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
-$positive:                        #387ef5 !default;
+$positive:                        #CE0000 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
-*/
+
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+img.check-image {
+  width: 100%;
+  height: 100%;
+}
+
+h4 span.detail-info {
+  font-size: .6em;
+  font-weight: normal;
+}
+
+input.checks-total-amount-input {
+  text-align:right;
+}
+
+input.deposit-amount-input {
+  text-align:right;
+}
+
+img.check-thumbnail {
+  height: 50%;
+  vertical-align: middle;
+}
+
+img.check-thumbnail-deposit-review {
+  height: 50px;
+}
+
+.key-menu-icon:before {
+  content: url('../img/key.png');
+}
+
+.key-menu-logo:before, .key-menu-logo {
+  content: url('../img/keybank.png');
+  height: 30px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.menu-header {
+  justify-content: flex-end;
+}
+
+img.capture-check-thumbnail {
+  height: 100px;
+}
+
+.pane, .view {
+  background-color: #F8F8F8;
+}
+
+.instruction-toast {
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  color: white;
+  background-color: $dark;
+  border-left: 10px solid $positive ;
+  padding-right: 10px;
+}
+
+.error-container {
+  margin: 5px 0;
+}
+
+.error-container:last-child {
+  margin: 5px 0 0;
+}
+
+.error {
+  padding: 10px 16px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #555;
+  vertical-align: middle;
+}
+
+.error i {
+  font-size: 24px;
+  color: #B83E2C;
+  vertical-align: middle;
+}
+
+.last-error-container > .error {
+  padding: 10px 16px 0;
+}
+
+.has-errors {
+  border-bottom: 3px solid #B83E2C;
+}
+
+.no-errors {
+  border-bottom: 3px solid green;
+}
+
+
 
