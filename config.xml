@@ -72,8 +72,8 @@
         <preference name="loginDisplay" value="embedded" />
         <preference name="wlNativeVersion" value="3978497367" />
     </platform>
-    <preference name="mfpServerUrl" value="http://10.80.106.176:10080" />
-    <preference name="mfpServerRuntime" value="server" />
+    <preference name="mfpServerUrl" value="http://10.82.70.91:10080" />
+    <preference name="mfpServerRuntime" value="kmf" />
     <preference name="displayName" value="KMF" />
     <preference name="mfpManualInit" value="false" />
 </widget>
