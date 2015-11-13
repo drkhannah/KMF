@@ -43,7 +43,10 @@
                     StatusBar.styleDefault();
                 }
 
-                MFPClientPromise.then(function(){WL.Logger.ctx({pkg: 'io.ionic'}).debug('mfp and ionic are ready, safe to use WL.* APIs');});
+                MFPClientPromise.then(function(){
+                    WL.Logger.ctx({pkg: 'io.ionic'}).debug('mfp and ionic are ready, safe to use WL.* APIs');
+                    WL.Client.connect();
+                });
 
                 //listen for state change errors
                 $rootScope.$on('$stateChangeError',

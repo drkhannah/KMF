@@ -1,0 +1,13 @@
+<ion-view view-title="{{vm.title}}">
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" data-ng-click="vm.submitStatus()">{{vm.status}}</button>
+  </ion-nav-buttons>
+  <ion-content>
+    <!-- Description -->
+    <div class="list">
+      <label class="item item-input">
+        <textarea placeholder="Reason for status"  data-ng-model="vm.description" data-ng-change="vm.descriptionChange()"></textarea>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>

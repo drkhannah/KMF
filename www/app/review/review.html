@@ -1,0 +1,17 @@
+<ion-view view-title="{{vm.title}}">
+  <ion-content>
+    <!-- Deposits List -->
+    <ion-list>
+      <ion-item class="item item-icon-right" data-ng-repeat="deposit in vm.deposits"  data-ui-sref="app.review-detail( {id: deposit.id} )">
+        <i class="icon" data-ng-class="{'ion-thumbsup': deposit.status === 'APPROVE',
+        'ion-thumbsdown': deposit.status === 'REJECT',
+        'ion-android-hand': deposit.status === 'RELEASE' }">
+        </i>
+        <h2>{{deposit.date}}</h2>
+        <h4>{{deposit.amount}}</h4>
+        <h4>{{deposit.time}}</h4>
+        <h4>{{deposit.account}}</h4>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

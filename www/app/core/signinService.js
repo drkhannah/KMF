@@ -14,7 +14,7 @@
             submitAnswer: submitAnswer,
             submitTerms: submitTerms,
             logout: logout,
-            access: true,
+            access: false,
             username: null,
             password: null,
             namePass: false,
