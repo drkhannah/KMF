@@ -1,20 +1,29 @@
 <ion-view>
-    <ion-header-bar>
-        <!-- Signin Button -->
-        <button ng-click="vm.signin()" class="button button-clear button-positive pull-right">
-            {{ vm.title }}
-        </button>
-    </ion-header-bar>
     <ion-content>
-            <div class="list">
-                <!-- User Name -->
-                <label class="item item-input">
-                    <input name="username" placeholder="Username:" type="text" data-ng-model="vm.username" required data-ng-change="vm.usernameChange()">
-                </label>
-                <!-- Password -->
-                <label class="item item-input">
-                    <input name="password" placeholder="Password:" type="password" data-ng-model="vm.password" required data-ng-change="vm.passwordChange()">
-                </label>
-            </div>
+        <!--Title Banner-->
+        <div class="signin-banner"><h3>{{vm.appName}}</h3></div>
+        <!--Signin Form-->
+        <div class="list card">
+            <!-- User Name -->
+            <label class="item item-input">
+                <input name="username" placeholder="Username:" type="text" data-ng-model="vm.username" required data-ng-change="vm.usernameChange()">
+            </label>
+            <!-- Password -->
+            <label class="item item-input">
+                <input name="password" placeholder="Password:" type="password" data-ng-model="vm.password" required data-ng-change="vm.passwordChange()">
+            </label>
+            <!-- Signin Button -->
+            <a class="item light" href="#" data-ng-click="vm.signin()">
+                <i class="icon ion-android-lock"></i>
+                Secure Signin
+            </a>
+        </div>
     </ion-content>
+    <!--support link-->
+    <div class="tabs tabs-icon-left signin-footer">
+        <a class="tab-item">
+            <i class="icon ion-ios-telephone"></i>
+            Need Help? Call Us.
+        </a>
+    </div>
 </ion-view>

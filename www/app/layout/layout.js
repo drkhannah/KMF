@@ -30,7 +30,7 @@
         vm.activate = activate;
         vm.signout = signout;
         vm.checkAccess = checkAccess;
-        vm.title = 'KTT mRDC';
+        vm.appTitle = 'KTT Mobile Deposit';
         vm.depositLink = 'DEPOSIT';
         vm.historyLink = 'HISTORY';
         vm.reviewLink = 'REVIEW';

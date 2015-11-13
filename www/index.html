@@ -19,8 +19,13 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-    <!-- core -->
-    <script src="app/core/core.module.js"></script>
+
+
+
+  </head>
+
+  <body ng-app="app">
+    <ion-nav-view></ion-nav-view>
 
     <!-- your app's js -->
     <script src="app/app.module.js"></script>
@@ -64,11 +69,5 @@
     <script src="app/core/depositService.js"></script>
     <script src="app/core/signinService.js"></script>
     <script src="app/core/reviewService.js"></script>
-
-
-  </head>
-
-  <body ng-app="app">
-    <ion-nav-view></ion-nav-view>
   </body>
 </html>

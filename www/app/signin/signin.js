@@ -30,6 +30,7 @@
         vm.usernameChange = usernameChange;
         vm.passwordChange = passwordChange;
         vm.title = 'Signin';
+        vm.appName = 'KTT Mobile Deposit';
         vm.username = signinService.username;
         vm.password = signinService.password;
 

@@ -7,7 +7,7 @@ For example, you might change some of the default colors:
 
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
-$positive:                        #CE0000 !default;
+$positive:                        #CC0000 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
@@ -20,7 +20,7 @@ $dark:                            #444 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import "www/lib/ionic/scss/ionic.scss";
 
 img.check-image {
   width: 100%;
@@ -101,7 +101,7 @@ img.capture-check-thumbnail {
 
 .error i {
   font-size: 24px;
-  color: #B83E2C;
+  color: $positive;
   vertical-align: middle;
 }
 
@@ -110,12 +110,37 @@ img.capture-check-thumbnail {
 }
 
 .has-errors {
-  border-bottom: 3px solid #B83E2C;
+  border-bottom: 3px solid $positive;
 }
 
 .no-errors {
   border-bottom: 3px solid green;
 }
 
+//
+//Signin view styles
+//
+
+div.signin-banner {
+  text-align: center;
+  padding: 50px 0;
+}
+
+a[data-ng-click="vm.signin()"]{
+  background-color: $positive;
+  text-align: center;
+
+  i{
+    font-size: 18px;
+    margin-right: 10px;
+  }
+}
+
+div.signin-footer{
+  font-size: 20px;
+  a{
+    font-size: 50px;
+  }
+}
 
 
