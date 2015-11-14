@@ -11,7 +11,7 @@ $positive:                        #CC0000 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
-$assertive:                       #ef473a !default;
+$assertive:                       #F9DB9D !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 
@@ -21,6 +21,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic.scss";
+
+.full-width {
+  width: 100%;
+}
 
 img.check-image {
   width: 100%;
@@ -72,63 +76,17 @@ img.capture-check-thumbnail {
   background-color: #F8F8F8;
 }
 
-.instruction-toast {
-  height: 2em;
-  line-height: 2em;
-  text-align: center;
-  color: white;
-  background-color: $dark;
-  border-left: 10px solid $positive ;
-  padding-right: 10px;
-}
-
-.error-container {
-  margin: 5px 0;
-}
-
-.error-container:last-child {
-  margin: 5px 0 0;
-}
-
-.error {
-  padding: 10px 16px;
-  font-family: "Arial Black", Gadget, sans-serif;
-  font-size: 11px;
-  text-transform: uppercase;
-  color: #555;
-  vertical-align: middle;
-}
-
-.error i {
-  font-size: 24px;
-  color: $positive;
-  vertical-align: middle;
-}
-
-.last-error-container > .error {
-  padding: 10px 16px 0;
-}
-
-.has-errors {
-  border-bottom: 3px solid $positive;
-}
-
-.no-errors {
-  border-bottom: 3px solid green;
-}
-
 //
-//Signin view styles
+// Error Toast Styles
 //
 
-div.signin-banner {
-  text-align: center;
-  padding: 50px 0;
-}
+div[ng-messages].error-toast {
+  position: absolute;
+  top: 0;
 
-a[data-ng-click="vm.signin()"]{
-  background-color: $positive;
-  text-align: center;
+  div[ng-message]{
+    margin: 1em 2em;
+  }
 
   i{
     font-size: 18px;
@@ -136,11 +94,21 @@ a[data-ng-click="vm.signin()"]{
   }
 }
 
-div.signin-footer{
-  font-size: 20px;
-  a{
-    font-size: 50px;
+//
+//Signin view styles
+//
+
+div.signin-banner {
+  padding: 5em 0;
+}
+
+a[data-ng-click="vm.signin()"]{
+
+  i{
+    font-size: 18px;
+    margin-right: 10px;
   }
 }
+
 
 
