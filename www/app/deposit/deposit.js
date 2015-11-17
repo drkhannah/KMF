@@ -33,7 +33,8 @@
             vm.singleDeposit = singleDeposit;
             vm.multipleDeposit = multipleDeposit;
             vm.cancelDeposit = depositService.cancelDeposit;
-            vm.title = 'Make Deposit';
+            vm.title = 'Make a Deposit';
+            vm.userSignedIn = 'Derek';
 
             activate();
 

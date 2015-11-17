@@ -8,6 +8,7 @@ For example, you might change some of the default colors:
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #CC0000 !default;
+$darkRed:                         #9D1C23 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
@@ -21,6 +22,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic.scss";
+
+.dark-red {
+  color: $darkRed !important;
+}
+
+.dark-red-bg {
+  background-color: $darkRed !important;
+}
 
 .full-width {
   width: 100%;
@@ -65,7 +74,7 @@ img.check-thumbnail-deposit-review {
 }
 
 .menu-header {
-  justify-content: flex-end;
+
 }
 
 img.capture-check-thumbnail {
@@ -132,9 +141,29 @@ a[data-ng-click="vm.signin()"]{
 //navigation menu view styles
 //
 
-ion-side-menu .menu-list{
-  color: red;
+.menu-list {
+  padding-left: 10px;
+  padding-right: 10px;
+
+  .item{
+    border-left-style: none;
+    border-right-style: none;
+  }
+  .item:first-child{
+    border-top-style: none;
+  }
+
 }
+
+//
+//Deposit view styles
+//
+i.icon-make-deposit{
+  font-size: 110px;
+}
+
+
+
 
 
 

@@ -7,7 +7,7 @@
         .controller('LayoutController', LayoutController);
 
     stateProvider.$inject = ['$stateProvider', '$urlRouterProvider'];
-    LayoutController.$inject = ['signinService', '$state', 'errorToastService'];
+    LayoutController.$inject = ['signinService', '$state'];
 
     /* @ngInject */
     function stateProvider($stateProvider, $urlRouterProvider) {
@@ -23,7 +23,7 @@
     }
 
     /* @ngInject */
-    function LayoutController(signinService, $state, errorToastService) {
+    function LayoutController(signinService, $state) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -31,12 +31,11 @@
         vm.signout = signout;
         vm.checkAccess = checkAccess;
         vm.appTitle = 'KTT Mobile Deposit';
-        vm.depositLink = 'Make Deposit';
+        vm.depositLink = 'Make a Deposit';
         vm.historyLink = 'Deposit History';
         vm.reviewLink = 'Deposit Review';
         vm.signoutLink = 'Signout';
         vm.userSignedIn = 'Derek';
-        vm.errorToast = errorToastService.errorToastMessage;
 
         activate();
 

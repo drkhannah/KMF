@@ -9079,6 +9079,12 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.dark-red {
+  color: #9D1C23 !important; }
+
+.dark-red-bg {
+  background-color: #9D1C23 !important; }
+
 .full-width {
   width: 100%; }
 
@@ -9111,9 +9117,6 @@ img.check-thumbnail-deposit-review {
   height: 30px;
   margin-top: 5px;
   margin-right: 5px; }
-
-.menu-header {
-  justify-content: flex-end; }
 
 img.capture-check-thumbnail {
   height: 100px; }
@@ -9151,5 +9154,14 @@ a[data-ng-click="vm.signin()"] i {
   font-size: 18px;
   margin-right: 10px; }
 
-ion-side-menu .menu-list {
-  color: red; }
+.menu-list {
+  padding-left: 10px;
+  padding-right: 10px; }
+  .menu-list .item {
+    border-left-style: none;
+    border-right-style: none; }
+  .menu-list .item:first-child {
+    border-top-style: none; }
+
+i.icon-make-deposit {
+  font-size: 110px; }
