@@ -1,10 +1,12 @@
 {
-  "name": "KMF",
+  "name": "kmf",
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.1.1",
     "ng-currency": "~0.8.11",
     "angular-messages": "~1.4.7"
   },
-  "dependencies": {}
+  "dependencies": {
+    "ionic-toast": "~0.2.0"
+  }
 }

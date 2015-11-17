@@ -7,7 +7,7 @@
         .controller('SigninController', SigninController);
 
     stateProvider.$inject = ['$stateProvider'];
-    SigninController.$inject = ['signinService', '$state', '$ionicHistory'];
+    SigninController.$inject = ['signinService', '$state', '$ionicHistory', 'errorToastService'];
 
     /* @ngInject */
     function stateProvider($stateProvider) {
@@ -21,7 +21,7 @@
     }
 
     /* @ngInject */
-    function SigninController(signinService, $state, $ionicHistory) {
+    function SigninController(signinService, $state, $ionicHistory, errorToastService) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -33,6 +33,7 @@
         vm.appName = 'KTT Mobile Deposit';
         vm.username = signinService.username;
         vm.password = signinService.password;
+        vm.signinForm;
 
         activate();
 
@@ -52,6 +53,8 @@
                     $ionicHistory.clearCache();
                     $state.go('securityQuestions');
                 })
+            } else {
+                errorToastService.errorToast(vm.signinForm.$error)
             }
         }
 

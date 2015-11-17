@@ -77,21 +77,39 @@ img.capture-check-thumbnail {
 }
 
 //
+// Stacked footer
+//
+.stacked-footer{
+  height: auto;
+  a{
+    position: relative;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  }
+  a:last-child{
+    margin-bottom: 0;
+  }
+  a.stable-bg{
+    border: solid 1px $positive;
+  }
+}
+
+
+//
 // Error Toast Styles
 //
 
-div[ng-messages].error-toast {
-  position: absolute;
-  top: 0;
-
-  div[ng-message]{
-    margin: 1em 2em;
-  }
-
-  i{
-    font-size: 18px;
-    margin-right: 10px;
-  }
+div.ionic_toast{
+  background-color: rgba(249, 219, 157, .9);
+  color: $dark;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
 
 //

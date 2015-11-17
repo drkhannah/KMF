@@ -13,6 +13,7 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- bower stuff -->
+    <script src="lib/ionic-toast/dist/ionic-toast.bundle.min.js"></script>
     <script src="lib/ng-currency/dist/ng-currency.min.js"></script>
     <script src="lib/angular-messages/angular-messages.min.js"></script>
 
@@ -25,6 +26,7 @@
   </head>
 
   <body ng-app="app">
+
     <ion-nav-view></ion-nav-view>
 
     <!-- your app's js -->
@@ -65,9 +67,12 @@
     <script src="app/review/review.js"></script>
 
     <!-- services -->
-    <script src="app/core/historyService.js"></script>
-    <script src="app/core/depositService.js"></script>
-    <script src="app/core/signinService.js"></script>
-    <script src="app/core/reviewService.js"></script>
+    <script src="app/services/historyService.js"></script>
+    <script src="app/services/depositService.js"></script>
+    <script src="app/services/signinService.js"></script>
+    <script src="app/services/reviewService.js"></script>
+    <script src="app/services/errorToastService.js"></script>
+
+
   </body>
 </html>

@@ -7,7 +7,7 @@
         .controller('QuestionsController', QuestionsController);
 
     stateProvider.$inject = ['$stateProvider'];
-    QuestionsController.$inject = ['signinService', '$state', '$ionicHistory'];
+    QuestionsController.$inject = ['signinService', '$state', '$ionicHistory', 'errorToastService'];
 
     /* @ngInject */
     function stateProvider($stateProvider) {
@@ -21,7 +21,7 @@
     }
 
     /* @ngInject */
-    function QuestionsController(signinService, $state, $ionicHistory) {
+    function QuestionsController(signinService, $state, $ionicHistory, errorToastService) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -31,6 +31,7 @@
         vm.title = 'Security Questions';
         vm.questionAnswered = signinService.questionAnswered;
         vm.userAnswer = signinService.userAnswer;
+        vm.answerForm = 'answerForm';
 
         activate();
 
@@ -49,6 +50,8 @@
                     $ionicHistory.clearCache();
                     $state.go('terms');
                 })
+            } else {
+                errorToastService.errorToast(vm.answerForm.$error)
             }
         }
 

@@ -9121,14 +9121,28 @@ img.capture-check-thumbnail {
 .pane, .view {
   background-color: #F8F8F8; }
 
-div[ng-messages].error-toast {
-  position: absolute;
-  top: 0; }
-  div[ng-messages].error-toast div[ng-message] {
-    margin: 1em 2em; }
-  div[ng-messages].error-toast i {
-    font-size: 18px;
-    margin-right: 10px; }
+.stacked-footer {
+  height: auto; }
+  .stacked-footer a {
+    position: relative;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px; }
+  .stacked-footer a:last-child {
+    margin-bottom: 0; }
+  .stacked-footer a.stable-bg {
+    border: solid 1px #CC0000; }
+
+div.ionic_toast {
+  background-color: rgba(249, 219, 157, 0.9);
+  color: #444;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px; }
 
 div.signin-banner {
   padding: 5em 0; }

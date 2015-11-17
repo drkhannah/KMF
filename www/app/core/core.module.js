@@ -6,7 +6,9 @@
         'ionic',
         'ngMessages',
 
+
         /* 3rd party modules*/
+        'ionic-toast',
         'ng-currency'
     ]);
     

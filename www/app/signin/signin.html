@@ -3,7 +3,7 @@
         <!--Title Banner-->
         <div class="signin-banner light-bg text-center"><h3>{{vm.appName}}</h3></div>
         <!--Signin Form-->
-        <form name="signinForm">
+        <form name="vm.signinForm">
             <div class="list card">
                 <!-- User Name -->
                 <label class="item item-input">
@@ -18,19 +18,6 @@
                     <i class="icon ion-android-lock"></i>
                     Secure Signin
                 </a>
-            </div>
-            <!-- Error Toast -->
-            <div ng-messages="signinForm.username.$error" class="error-toast text-center full-width assertive-bg" role="alert">
-                <div ng-message="required">
-                    <i class="icon ion-android-warning"></i>
-                    Username field is required
-                </div>
-            </div>
-            <div ng-messages="signinForm.password.$error && signinForm.username.$valid" class="error-toast text-center full-width assertive-bg" role="alert">
-                <div ng-message="required">
-                    <i class="icon ion-android-warning"></i>
-                    Password field is required
-                </div>
             </div>
         </form>
     </ion-content>

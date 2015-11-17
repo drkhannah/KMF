@@ -7,7 +7,7 @@
         .controller('LayoutController', LayoutController);
 
     stateProvider.$inject = ['$stateProvider', '$urlRouterProvider'];
-    LayoutController.$inject = ['signinService', '$state'];
+    LayoutController.$inject = ['signinService', '$state', 'errorToastService'];
 
     /* @ngInject */
     function stateProvider($stateProvider, $urlRouterProvider) {
@@ -23,7 +23,7 @@
     }
 
     /* @ngInject */
-    function LayoutController(signinService, $state) {
+    function LayoutController(signinService, $state, errorToastService) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -35,6 +35,7 @@
         vm.historyLink = 'HISTORY';
         vm.reviewLink = 'REVIEW';
         vm.signoutLink = 'SIGNOUT';
+        vm.errorToast = errorToastService.errorToastMessage;
 
         activate();
 

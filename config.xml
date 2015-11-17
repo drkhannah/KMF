@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ibm.KMF" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>KMF</name>
+<widget id="com.ibm.kmf" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>kmf</name>
     <description>
         An Ionic Framework and Cordova project.
     </description>
@@ -74,6 +74,6 @@
     </platform>
     <preference name="mfpServerUrl" value="http://192.168.1.65:10080" />
     <preference name="mfpServerRuntime" value="kmf" />
-    <preference name="displayName" value="KMF" />
+    <preference name="displayName" value="kmf" />
     <preference name="mfpManualInit" value="false" />
 </widget>

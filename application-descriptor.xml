@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<application id="com_ibm_KMF" platformVersion="7.1.0.00.20151012-1525" xmlns="http://www.worklight.com/application-descriptor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <displayName>KMF</displayName>
+<application id="com_ibm_kmf" platformVersion="7.1.0.00.20151012-1525" xmlns="http://www.worklight.com/application-descriptor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <displayName>kmf</displayName>
     <description>An Ionic Framework and Cordova project.</description>
     <author>
         <name>Ionic Framework Team</name>
@@ -22,7 +22,7 @@
             <publicSigningKey />
         </security>
     </android>
-    <iphone bundleId="com.ibm.KMF" version="1.0.0">
+    <iphone bundleId="com.ibm.kmf" version="1.0.0">
         <worklightSettings include="false" />
         <security>
             <encryptWebResources enabled="false" />

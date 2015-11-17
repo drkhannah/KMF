@@ -1,18 +1,10 @@
 <ion-view>
     <ion-header-bar>
-        <!-- Dont Accept Button -->
-        <button data-ng-click="vm.dontAccept()" class="button button-clear button-positive">
-            Don't Accept
-        </button>
-        <!-- Accept Button -->
-        <button data-ng-click="vm.acceptTerms()" class="button button-clear button-positive">
-            Accept
-        </button>
+        <h1 class="title">Terms Of Use</h1>
     </ion-header-bar>
-    <ion-content>
-            <div class="list">
+    <ion-content overflow-scroll="">
                 <!-- Terms -->
-                <div class="card">
+                <div class="list list-inset">
                     <div class="item item-text-wrap">
                         These are the terms and aggrements Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at lacus sed sem lobortis pharetra quis malesuada ex. Nulla fermentum tortor risus, aliquam lobortis nulla lacinia vitae. Nullam sapien odio, posuere a velit vel, fringilla condimentum elit. Proin sit amet commodo sem. Quisque nec semper erat. Integer pellentesque ligula et porta dignissim. Morbi in urna ex.
                         Donec ultricies lectus at justo scelerisque suscipit. In vulputate elit id ipsum commodo, in luctus augue scelerisque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras viverra aliquet mollis. Maecenas finibus tortor dui. Cras efficitur, arcu non feugiat ultrices, quam tortor ornare nisl, a condimentum nisl purus non velit. Quisque ligula eros, vehicula non libero ac, interdum accumsan nisl. Ut at sem iaculis, pellentesque quam in, iaculis nulla. Nulla in elit auctor, bibendum tortor quis, dapibus nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eleifend sem nec felis euismod hendrerit. Pellentesque dictum aliquet elit, eget elementum velit elementum eu. Pellentesque lacinia magna odio, sit amet imperdiet arcu eleifend id. Phasellus a ultricies nisi, non elementum eros. Cras dapibus mauris nec purus maximus feugiat. Phasellus maximus nibh mi, eget convallis augue sagittis vitae.
@@ -21,6 +13,14 @@
                         Praesent egestas magna erat, et fermentum elit facilisis ut. Integer maximus scelerisque tempor. Integer condimentum dolor in nisi consequat hendrerit. Aenean pretium risus vitae sapien condimentum malesuada. Morbi viverra elementum risus, ac porta massa porta et. Duis sagittis purus et elit facilisis bibendum. Curabitur vitae lacinia neque, eget aliquet nisi. Suspendisse congue quis ex non pretium. In convallis bibendum ullamcorper. Proin porttitor elementum sapien, non aliquet nibh semper in.
                     </div>
                 </div>
-            </div>
     </ion-content>
+    <!-- accept Button -->
+    <div class="bar bar-footer stacked-footer">
+        <div class="row">
+            <div class="col">
+                <a class="positive-bg stable" data-ng-click="vm.acceptTerms()">Continue</a>
+                <a class="stable-bg positive" data-ng-click="vm.dontAccept()">Do Not Agree</a>
+            </div>
+        </div>
+    </div>
 </ion-view>
