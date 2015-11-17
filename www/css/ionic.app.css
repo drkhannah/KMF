@@ -9150,3 +9150,6 @@ div.signin-banner {
 a[data-ng-click="vm.signin()"] i {
   font-size: 18px;
   margin-right: 10px; }
+
+ion-side-menu .menu-list {
+  color: red; }

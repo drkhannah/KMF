@@ -31,10 +31,11 @@
         vm.signout = signout;
         vm.checkAccess = checkAccess;
         vm.appTitle = 'KTT Mobile Deposit';
-        vm.depositLink = 'DEPOSIT';
-        vm.historyLink = 'HISTORY';
-        vm.reviewLink = 'REVIEW';
-        vm.signoutLink = 'SIGNOUT';
+        vm.depositLink = 'Make Deposit';
+        vm.historyLink = 'Deposit History';
+        vm.reviewLink = 'Deposit Review';
+        vm.signoutLink = 'Signout';
+        vm.userSignedIn = 'Derek';
         vm.errorToast = errorToastService.errorToastMessage;
 
         activate();
