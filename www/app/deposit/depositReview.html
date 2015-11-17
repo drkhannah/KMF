@@ -3,8 +3,10 @@
         <button class="button button-icon button-clear ion-ios-close-empty" data-ng-click="vm.cancelDeposit()"></button>
     </ion-nav-buttons>
     <ion-content>
-
         <div class="list">
+            <div class="item item-divider">
+                Summary
+            </div>
             <!-- Account Select -->
             <label class="item item-input item-select">
                 <span class="input-label">Account</span>
@@ -36,14 +38,11 @@
         </div>
     </ion-content>
     <!-- Footer -->
-    <div class="bar bar-footer bar-stable">
-        <!-- Add Check Button -->
-        <button class="button button-clear button-positive" data-ng-show="vm.type === 'MULTIPLE'" data-ng-click="vm.addCheck()">
-            Add Check
-        </button>
-        <!-- Complete Deposit Button -->
-        <button class="button button-clear button-positive pull-right" data-ng-click="vm.completeDeposit()">
-            Complete Deposit
-        </button>
+    <div class="bar bar-subfooter stacked-footer" data-ng-show="vm.type === 'MULTIPLE'" data-ng-click="vm.addCheck()">
+        <a class="stable-bg royal add-check-button">Add Check</a>
     </div>
+    <div class="bar bar-footer bar-royal" data-ng-click="vm.completeDeposit()">
+        <a class="title">Complete Deposit</a>
+    </div>
+
 </ion-view>

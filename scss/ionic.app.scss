@@ -13,7 +13,7 @@ $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #F9DB9D !default;
-$royal:                           #886aea !default;
+$royal:                           #75B0D4 !default;
 $dark:                            #444 !default;
 
 
@@ -103,9 +103,15 @@ img.capture-check-thumbnail {
   a:last-child{
     margin-bottom: 0;
   }
-  a.stable-bg{
+  a.dont-accpet-button{
     border: solid 1px $positive;
   }
+
+  a.add-check-button{
+    border: solid 1px $royal;
+    margin:5px;
+  }
+
 }
 
 
@@ -161,6 +167,12 @@ a[data-ng-click="vm.signin()"]{
 i.icon-make-deposit{
   font-size: 110px;
 }
+
+//
+//Deposit Review view styles
+//
+
+
 
 
 
