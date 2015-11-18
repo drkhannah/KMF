@@ -9143,12 +9143,13 @@ img.capture-check-thumbnail {
     border: solid 1px #75B0D4;
     margin: 5px; }
 
-div.ionic_toast {
-  background-color: rgba(249, 219, 157, 0.9);
-  color: #444;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px; }
+div#notie-alert-outer {
+  background-color: #F9DB9D !important; }
+  div#notie-alert-outer .ion-android-warning {
+    margin-right: 10px; }
+  div#notie-alert-outer #notie-alert-inner span {
+    color: #444 !important;
+    font-size: 14px !important; }
 
 div.signin-banner {
   padding: 5em 0; }

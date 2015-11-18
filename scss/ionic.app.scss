@@ -119,12 +119,17 @@ img.capture-check-thumbnail {
 // Error Toast Styles
 //
 
-div.ionic_toast{
-  background-color: rgba(249, 219, 157, .9);
-  color: $dark;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+div#notie-alert-outer{
+  background-color: $assertive !important;
+
+  .ion-android-warning{
+    margin-right: 10px;
+  }
+
+  #notie-alert-inner span{
+    color: $dark !important;
+    font-size: 14px !important;
+  }
 }
 
 //
@@ -171,6 +176,9 @@ i.icon-make-deposit{
 //
 //Deposit Review view styles
 //
+
+
+
 
 
 

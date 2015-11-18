@@ -2,10 +2,10 @@ angular
     .module('app.core')
     .factory('errorToastService', errorToastService);
 
-errorToastService.$inject = ['ionicToast'];
+errorToastService.$inject = [];
 
 /* @ngInject */
-function errorToastService(ionicToast) {
+function errorToastService() {
     var service = {
         errorToast: errorToast,
         errorToastMessage: null
@@ -30,7 +30,7 @@ function errorToastService(ionicToast) {
             service.errorToastMessage = 'error message sent from server';
         }
 
-        ionicToast.show(service.errorToastMessage, 'top', false, 2500);
+        notie.alert(2, '<i class="icon ion-android-warning"></i>' + service.errorToastMessage, 2);
     }
 
 }
