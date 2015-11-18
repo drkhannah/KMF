@@ -9085,6 +9085,12 @@ a.button {
 .dark-red-bg {
   background-color: #9D1C23 !important; }
 
+.positive-border {
+  border: solid 1px #CC0000; }
+
+.royal-border {
+  border: solid 1px #75B0D4; }
+
 .full-width {
   width: 100%; }
 
@@ -9125,23 +9131,24 @@ img.capture-check-thumbnail {
   background-color: #F8F8F8; }
 
 .stacked-footer {
-  height: auto; }
+  height: auto;
+  display: block; }
   .stacked-footer a {
-    position: relative;
     display: block;
     text-align: center;
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px; }
-  .stacked-footer a:last-child {
-    margin-bottom: 0; }
-  .stacked-footer a.dont-accpet-button {
-    border: solid 1px #CC0000; }
-  .stacked-footer a.add-check-button {
-    border: solid 1px #75B0D4;
-    margin: 5px; }
+  .stacked-footer a.full-stacked-footer-link {
+    margin: -5px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0; }
+  .stacked-footer a.add-check-link {
+    margin-bottom: 15px;
+    margin-top: 7px; }
 
 div#notie-alert-outer {
   background-color: #F9DB9D !important; }

@@ -38,11 +38,8 @@
         </div>
     </ion-content>
     <!-- Footer -->
-    <div class="bar bar-subfooter stacked-footer" data-ng-show="vm.type === 'MULTIPLE'" data-ng-click="vm.addCheck()">
-        <a class="stable-bg royal add-check-button">Add Check</a>
+    <div class="bar bar-footer stacked-footer">
+        <a class="stable-bg royal royal-border add-check-link" data-ng-show="vm.type === 'MULTIPLE'" data-ng-click="vm.addCheck()">Add Check</a>
+        <a class="royal-bg stable full-stacked-footer-link" data-ng-click="vm.completeDeposit()">Complete Deposit</a>
     </div>
-    <div class="bar bar-footer bar-royal" data-ng-click="vm.completeDeposit()">
-        <a class="title">Complete Deposit</a>
-    </div>
-
 </ion-view>
