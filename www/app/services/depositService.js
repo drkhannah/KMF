@@ -12,20 +12,19 @@
         var service = {
             loadAccounts: loadAccounts,
             cancelDeposit: cancelDeposit,
-            type: null,
-            mode: null,
             checkObj: {
-                account: null,
                 checkAmount: null,
                 checkFrontImage: null,
                 checkBackImage: null
             },
             depositObj: {
                 account: null,
-                userDefinedDepositAmount: null,
                 checksTotalAmount: null,
+                depositAmount : null,
                 checks: [],
-                status: null
+                status: null,
+                type: null,
+                mode: null
             }
         };
 
@@ -72,17 +71,17 @@
                 }]
             }).then(function(res) {
                 if(res) {
-                    service.type = null;
-                    service.mode= null;
-                    service.checkObj.account = null;
+                    service.checkObj.depositAmount = null;
                     service.checkObj.checkAmount= null;
                     service.checkObj.checkFrontImage= null;
                     service.checkObj.checkBackImage= null;
+                    service.depositObj.depositAmount = null;
                     service.depositObj.account= null;
-                    service.depositObj.userDefinedDepositAmount= null;
                     service.depositObj.checksTotalAmount= null;
                     service.depositObj.checks=  [];
                     service.depositObj.status= null;
+                    service.depositObj.type = null;
+                    service.depositObj.mode= null;
                     $ionicHistory.clearCache();
                     $state.go('app.deposit');
 

@@ -50,20 +50,19 @@
             });
             $ionicHistory.clearCache();
             $state.go('app.deposit');
-            depositService.type =  null;
-            depositService.mode = null;
             depositService.checkObj = {
-                account: null,
                 checkAmount: null,
                 checkFrontImage: null,
                 checkBackImage: null
             };
             depositService.depositObj = {
                 account: null,
-                userDefinedDepositAmount: null,
                 checksTotalAmount: null,
+                depositAmount : null,
                 checks: [],
-                status: null
+                status: null,
+                type: null,
+                mode: null
             };
 
             console.log ('depositService Object: ' + angular.toJson(depositService));

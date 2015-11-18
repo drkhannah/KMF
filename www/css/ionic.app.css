@@ -9145,7 +9145,10 @@ img.capture-check-thumbnail {
     margin: -5px;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
-    border-radius: 0; }
+    border-radius: 0;
+    font-size: 17px;
+    font-weight: 500;
+    height: 43px; }
   .stacked-footer a.add-check-link {
     margin-bottom: 15px;
     margin-top: 7px; }

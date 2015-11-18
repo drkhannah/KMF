@@ -33,28 +33,28 @@
     /* @ngInject */
     function CaptureCheckController(accountsPromise, depositService, $state, $ionicHistory, $timeout, $ionicPopup, $stateParams) {
         /* jshint validthis: true */
-        var vm = this,
-            checkObj = depositService.checkObj,
-            depositObj = depositService.depositObj;
+        var vm = this;
 
         vm.activate = activate;
         vm.accountChange = accountChange;
+        vm.depositAmountChange = depositAmountChange;
         vm.miSnapCheckFront = miSnapCheckFront;
         vm.miSnapCheckBack = miSnapCheckBack;
         vm.submitCheck = submitCheck;
         vm.checkAmountChange = checkAmountChange;
         vm.cancelCheck = cancelCheck;
-        vm.editCheckHashKey = $stateParams.hashKey;
         vm.cancelDeposit = depositService.cancelDeposit;
+        vm.editCheckHashKey = $stateParams.hashKey;
         vm.title = 'Capture Check';
-        vm.type = depositService.type;
-        vm.mode = depositService.mode;
-        vm.checkAmount = checkObj.checkAmount;
+        vm.depositObj = depositService.depositObj;
+        vm.checkObj = depositService.checkObj;
+        vm.depositAmount = depositService.depositObj.depositAmount;
         vm.accounts = accountsPromise;
-        vm.selectedAccount = checkObj.account;
-        vm.checks = depositObj.checks;
-        vm.checkFrontImage = checkObj.checkFrontImage;
-        vm.checkBackImage = checkObj.checkBackImage;
+        vm.selectedAccount = depositService.depositObj.account;
+        vm.checkAmount = depositService.checkObj.checkAmount;
+        vm.checks = depositService.depositObj.checks;
+        vm.checkFrontImage = depositService.checkObj.checkFrontImage;
+        vm.checkBackImage = depositService.checkObj.checkBackImage;
         vm.frontCheckLoading = false;
         vm.backCheckLoading = false;
 
@@ -66,13 +66,18 @@
         function activate() {
         }
 
-        function accountChange() { //keep checkObj in depositService up to date
-            checkObj.account = vm.selectedAccount;
+        function depositAmountChange() { //keep vm.checkObj in depositService up to date
+            vm.depositObj.depositAmount = vm.depositAmount;
             console.log(depositService);
         }
 
-        function checkAmountChange() { //keep checkObj in depositService up to date
-            checkObj.checkAmount = vm.checkAmount;
+        function accountChange() { //keep vm.checkObj in depositService up to date
+            vm.depositObj.account = vm.selectedAccount;
+            console.log(depositService);
+        }
+
+        function checkAmountChange() { //keep vm.checkObj in depositService up to date
+            vm.checkObj.checkAmount = vm.checkAmount;
             console.log(depositService);
         }
 
@@ -112,8 +117,8 @@
             vm.frontCheckLoading = true;
             $timeout(function() {
                 vm.frontCheckLoading = false;
-                checkObj.checkFrontImage = accountsPromise[0].checkFrontImage;
-                vm.checkFrontImage = checkObj.checkFrontImage;
+                vm.checkObj.checkFrontImage = accountsPromise[0].checkFrontImage;
+                vm.checkFrontImage = vm.checkObj.checkFrontImage;
                 console.log (depositService);
             }, 3000);
         }
@@ -122,8 +127,8 @@
             vm.backCheckLoading = true;
             $timeout(function() {
                 vm.backCheckLoading = false;
-                checkObj.checkBackImage = accountsPromise[0].checkBackImage;
-                vm.checkBackImage = checkObj.checkBackImage;
+                vm.checkObj.checkBackImage = accountsPromise[0].checkBackImage;
+                vm.checkBackImage = vm.checkObj.checkBackImage;
                 console.log (depositService);
             }, 3000);
         }
@@ -132,19 +137,19 @@
             $ionicHistory.clearCache();
             $state.go('app.deposit-review');
 
-            //loop through checks in depositObj in depositService,
+            //loop through checks in vm.depositObj in depositService,
             //if checks array is empty, push the check to the checks array,
             //if the array isn't empty, use hashkey to see if the check exits,
             //if check exits update the check's properties
             //if check doesn't exist, push check to checks array
-            if(depositObj.checks.length >= 1){
-                depositObj.checks.forEach(function (check) {
+            if(vm.depositObj.checks.length >= 1){
+                vm.depositObj.checks.forEach(function (check) {
                     if(check.$$hashKey === vm.editCheckHashKey){
                         check.checkAmount = vm.checkAmount;
                         check.checkFrontImage = vm.checkFrontImage;
                         check.checkBackImage = vm.checkBackImage;
                     } else if(vm.editCheckHashKey === undefined || vm.editCheckHashKey === null || vm.editCheckHashKey === "" || vm.editCheckHashKey === ''){
-                        depositObj.checks.push({
+                        vm.depositObj.checks.push({
                             "checkAmount": vm.checkAmount,
                             "checkFrontImage": vm.checkFrontImage,
                             "checkBackImage": vm.checkBackImage
@@ -153,21 +158,21 @@
                     }
                 });
             } else {
-                depositObj.checks.push({
+                vm.depositObj.checks.push({
                     "checkAmount": vm.checkAmount,
                     "checkFrontImage": vm.checkFrontImage,
                     "checkBackImage": vm.checkBackImage
                 });
             }
 
-            //update account in depositObj in depositService
-            depositObj.account = vm.selectedAccount;
+            //update account in vm.depositObj in depositService
+            vm.depositObj.account = vm.selectedAccount;
+            vm.depositObj.depositAmount = vm.depositAmount;
 
-            //clear out checkObj in depositService
-            checkObj.account = null;
-            checkObj.checkAmount = null;
-            checkObj.checkFrontImage = null;
-            checkObj.checkBackImage = null;
+            //clear out vm.checkObj in depositService
+            vm.checkObj.checkAmount = null;
+            vm.checkObj.checkFrontImage = null;
+            vm.checkObj.checkBackImage = null;
             console.log(depositService);
         }
 
@@ -195,11 +200,11 @@
                     $ionicHistory.clearCache();
                     $state.go('app.deposit-review');
 
-                    //clear checkObj in depositService
-                    checkObj.amount = null;
-                    checkObj.checkAmount = null;
-                    checkObj.checkFrontImage = null;
-                    checkObj.checkBackImage = null;
+                    //clear vm.checkObj in depositService
+                    vm.checkObj.amount = null;
+                    vm.checkObj.checkAmount = null;
+                    vm.checkObj.checkFrontImage = null;
+                    vm.checkObj.checkBackImage = null;
                     console.log(depositService);
                 } else {
                     console.log("Don't Cancel Check Submition");

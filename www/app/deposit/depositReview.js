@@ -33,12 +33,11 @@
     /* @ngInject */
     function DepositReviewController(accountsPromise, depositService, $state, $ionicHistory) {
         /* jshint validthis: true */
-        var vm = this,
-            checkObj = depositService.checkObj,
-            depositObj = depositService.depositObj;
+        var vm = this;
 
         vm.activate = activate;
         vm.accountChange = accountChange;
+        vm.depositAmountChange = depositAmountChange;
         vm.addCheck = addCheck;
         vm.completeDeposit = completeDeposit;
         vm.deleteCheck = deleteCheck;
@@ -46,12 +45,13 @@
         vm.getChecksTotal = getChecksTotal;
         vm.cancelDeposit = depositService.cancelDeposit;
         vm.title = 'Deposit Review';
-        vm.type = depositService.type;
-        vm.mode = depositService.mode;
+        vm.checkObj = depositService.checkObj;
+        vm.depositObj = depositService.depositObj;
         vm.accounts = accountsPromise;
-        vm.selectedAccount = depositObj.account;
-        vm.checksTotalAmount = depositObj.checksTotalAmount;
-        vm.checks = depositObj.checks;
+        vm.selectedAccount = depositService.depositObj.account;
+        vm.depositAmount = depositService.depositObj.depositAmount;
+        vm.checksTotalAmount = depositService.depositObj.checksTotalAmount;
+        vm.checks = depositService.depositObj.checks;
 
         activate();
 
@@ -59,10 +59,10 @@
 
         //function runs when controller is activated
         function activate() {
-            vm.selectedAccount = depositObj.account;
-            vm.checks = depositObj.checks;
+            vm.selectedAccount = vm.depositObj.account;
+            vm.checks = vm.depositObj.checks;
             vm.getChecksTotal();
-            depositObj.checksTotalAmount = vm.checksTotalAmount;
+            vm.depositObj.checksTotalAmount = vm.checksTotalAmount;
         }
 
         // calculate the amounts of checks in checks list and total them
@@ -77,15 +77,21 @@
 
         // update depositService.account when selection changes in view
         function accountChange() {
-            depositObj.account = vm.selectedAccount;
+            vm.depositObj.account = vm.selectedAccount;
+            console.log(depositService);
+        }
+        
+        // update depositService.account when selection changes in view
+        function depositAmountChange() { 
+            vm.depositObj.depositAmount = vm.depositAmount;
             console.log(depositService);
         }
 
         //Delete check from checks list, then retotal checks amount total
         function deleteCheck(index) {
-            depositObj.checks.splice(index, 1);
+            vm.depositObj.checks.splice(index, 1);
             vm.getChecksTotal();
-            depositObj.checksTotalAmount = vm.checksTotalAmount;
+            vm.depositObj.checksTotalAmount = vm.checksTotalAmount;
             console.log (depositService);
         }
 
@@ -93,10 +99,9 @@
         function retake(check, account) {
             $ionicHistory.clearCache();
             $state.go('app.capture-check', {hashKey: check.$$hashKey});
-            checkObj.account = account;
-            checkObj.checkAmount = check.checkAmount;
-            checkObj.checkFrontImage = check.checkFrontImage;
-            checkObj.checkBackImage = check.checkBackImage;
+            vm.checkObj.checkAmount = check.checkAmount;
+            vm.checkObj.checkFrontImage = check.checkFrontImage;
+            vm.checkObj.checkBackImage = check.checkBackImage;
             console.log ('going from depositReview to captureCheck: ' + angular.toJson(depositService));
         }
 
@@ -104,7 +109,8 @@
         function addCheck() {
             $ionicHistory.clearCache();
             $state.go('app.capture-check');
-            checkObj.account = depositObj.account;
+            vm.depositObj.account = vm.selectedAccount;
+            vm.depositObj.depositAmount = vm.depositAmount;
             console.log(depositService);
         }
 

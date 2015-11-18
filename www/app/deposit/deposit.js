@@ -35,6 +35,7 @@
             vm.cancelDeposit = depositService.cancelDeposit;
             vm.title = 'Make a Deposit';
             vm.userSignedIn = 'Derek';
+            vm.depositObj = depositService.depositObj;
 
             activate();
 
@@ -48,24 +49,22 @@
             //initiate Single Check Deposit
             function singleDeposit(){
 
-                depositService.type = 'SINGLE';
-                depositService.mode = 'CREATE';
-                console.log('Deposit Type: ' + depositService.type);
-                console.log('Deposit Mode: ' + depositService.mode);
+                vm.depositObj.type = 'SINGLE';
+                vm.depositObj.mode = 'CREATE';
+                console.log(depositService);
                 $ionicHistory.clearCache();
-                $state.go('app.capture-check');
+                $state.go('app.deposit-review');
 
             }
 
             //initiate Multiple Check Deposit
             function multipleDeposit(){
 
-                depositService.type = 'MULTIPLE';
-                depositService.mode = 'CREATE';
-                console.log('Deposit Type: ' + depositService.type);
-                console.log('Deposit Mode: ' + depositService.mode);
+                vm.depositObj.type = 'MULTIPLE';
+                vm.depositObj.mode = 'CREATE';
+                console.log(depositService);
                 $ionicHistory.clearCache();
-                $state.go('app.capture-check');
+                $state.go('app.deposit-review');
 
             }
         }
