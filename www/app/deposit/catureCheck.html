@@ -3,12 +3,12 @@
         <button class="button button-icon button-clear ion-ios-close-empty" data-ng-click="vm.cancelCheck()"></button>
     </ion-nav-buttons>
     <ion-content>
-        <form name="captureCheckForm">
+        <form name="vm.captureCheckForm">
             <div class="list">
                 <!--Deposit Amount-->
                 <label class="item item-input" ng-cloak>
                     <span class="input-label">Total Deposit</span>
-                    <input data-ng-currency type="text" data-ng-required="true" name="depositAmount" data-ng-model="vm.depositAmount" placeholder="Total Deposit Amount" data-ng-change="vm.depositAmountChange()">
+                    <input data-ng-currency type="text" required name="depositAmount" data-ng-model="vm.depositAmount" placeholder="Total Deposit Amount" data-ng-change="vm.depositAmountChange()">
                 </label>
 
                 <!-- Account Select -->
@@ -22,7 +22,7 @@
                 <!-- Check Amount -->
                 <label class="item item-input" ng-cloak>
                     <span class="input-label">Amount</span>
-                    <input data-ng-currency type="text" data-ng-required="true" name="checkAmount" data-ng-model="vm.checkAmount" placeholder="Check Amount" data-ng-change="vm.checkAmountChange()">
+                    <input data-ng-currency type="text" required name="checkAmount" data-ng-model="vm.checkAmount" placeholder="Check Amount" data-ng-change="vm.checkAmountChange()">
                 </label>
 
                     <!-- Scan Check Front Button -->
@@ -60,8 +60,8 @@
     <!-- Footer -->
     <div class="bar bar-footer royal-bg stable" >
         <a class="title" data-ng-click="vm.submitCheck()">
-            <span ng-if="vm.depositObj.type === 'SINGLE'" >Submit Check</span>
-            <span ng-if="vm.depositObj.type === 'MULTIPLE'" >Add Check</span>
+            <span ng-if="vm.depositObj.type === 'SINGLE'">Submit Check</span>
+            <span ng-if="vm.depositObj.type === 'MULTIPLE'">Add Check</span>
         </a>
     </div>
 </ion-view>

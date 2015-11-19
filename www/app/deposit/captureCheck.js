@@ -7,7 +7,7 @@
         .controller('CaptureCheckController', CaptureCheckController);
 
     stateProvider.$inject = ['$stateProvider'];
-    CaptureCheckController.$inject = ['accountsPromise', 'depositService', '$state', '$ionicHistory', '$timeout', '$ionicPopup', '$stateParams'];
+    CaptureCheckController.$inject = ['accountsPromise', 'depositService', '$state', '$ionicHistory', '$timeout', '$ionicPopup', '$stateParams', 'errorToastService'];
 
     /* @ngInject */
     function stateProvider($stateProvider){
@@ -31,7 +31,7 @@
     }
 
     /* @ngInject */
-    function CaptureCheckController(accountsPromise, depositService, $state, $ionicHistory, $timeout, $ionicPopup, $stateParams) {
+    function CaptureCheckController(accountsPromise, depositService, $state, $ionicHistory, $timeout, $ionicPopup, $stateParams, errorToastService) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -57,6 +57,7 @@
         vm.checkBackImage = depositService.checkObj.checkBackImage;
         vm.frontCheckLoading = false;
         vm.backCheckLoading = false;
+        vm.captureCheckForm;
 
 
         activate();
@@ -123,7 +124,8 @@
             }, 3000);
         }
 
-        function miSnapCheckBack(){ //get image of back of check
+        //get image of back of check
+        function miSnapCheckBack(){
             vm.backCheckLoading = true;
             $timeout(function() {
                 vm.backCheckLoading = false;
@@ -133,49 +135,60 @@
             }, 3000);
         }
 
-        function submitCheck() { //submit check to alogent server
-            $ionicHistory.clearCache();
-            $state.go('app.deposit-review');
-
-            //loop through checks in vm.depositObj in depositService,
-            //if checks array is empty, push the check to the checks array,
-            //if the array isn't empty, use hashkey to see if the check exits,
-            //if check exits update the check's properties
-            //if check doesn't exist, push check to checks array
-            if(vm.depositObj.checks.length >= 1){
-                vm.depositObj.checks.forEach(function (check) {
-                    if(check.$$hashKey === vm.editCheckHashKey){
-                        check.checkAmount = vm.checkAmount;
-                        check.checkFrontImage = vm.checkFrontImage;
-                        check.checkBackImage = vm.checkBackImage;
-                    } else if(vm.editCheckHashKey === undefined || vm.editCheckHashKey === null || vm.editCheckHashKey === "" || vm.editCheckHashKey === ''){
-                        vm.depositObj.checks.push({
-                            "checkAmount": vm.checkAmount,
-                            "checkFrontImage": vm.checkFrontImage,
-                            "checkBackImage": vm.checkBackImage
-                        });
-                        vm.editCheckHashKey = 'New check Pushed'
-                    }
-                });
+        //submit check to alogent server
+        function submitCheck() {
+            //check angular form validation errors
+            if(Object.keys(vm.captureCheckForm.$error).length >= 1) {
+                errorToastService.errorToast(vm.captureCheckForm.$error);
+            } else if(vm.checkFrontImage === null){
+                errorToastService.errorToast('Scan Check Front');
+            } else if(vm.checkBackImage === null){
+                errorToastService.errorToast('Scan Check Back');
             } else {
-                vm.depositObj.checks.push({
-                    "checkAmount": vm.checkAmount,
-                    "checkFrontImage": vm.checkFrontImage,
-                    "checkBackImage": vm.checkBackImage
-                });
+                $ionicHistory.clearCache();
+                $state.go('app.deposit-review');
+
+                //loop through checks in vm.depositObj in depositService,
+                //if checks array is empty, push the check to the checks array,
+                //if the array isn't empty, use hashkey to see if the check exits,
+                //if check exits update the check's properties
+                //if check doesn't exist, push check to checks array
+                if (vm.depositObj.checks.length >= 1) {
+                    vm.depositObj.checks.forEach(function (check) {
+                        if (check.$$hashKey === vm.editCheckHashKey) {
+                            check.checkAmount = vm.checkAmount;
+                            check.checkFrontImage = vm.checkFrontImage;
+                            check.checkBackImage = vm.checkBackImage;
+                        } else if (vm.editCheckHashKey === undefined || vm.editCheckHashKey === null || vm.editCheckHashKey === "" || vm.editCheckHashKey === '') {
+                            vm.depositObj.checks.push({
+                                "checkAmount": vm.checkAmount,
+                                "checkFrontImage": vm.checkFrontImage,
+                                "checkBackImage": vm.checkBackImage
+                            });
+                            vm.editCheckHashKey = 'New check Pushed'
+                        }
+                    });
+                } else {
+                    vm.depositObj.checks.push({
+                        "checkAmount": vm.checkAmount,
+                        "checkFrontImage": vm.checkFrontImage,
+                        "checkBackImage": vm.checkBackImage
+                    });
+                }
+
+                //update account and depositAmount in vm.depositObj in depositService
+                vm.depositObj.account = vm.selectedAccount;
+                vm.depositObj.depositAmount = vm.depositAmount;
+
+                //clear out vm.checkObj in depositService
+                vm.checkObj.checkAmount = null;
+                vm.checkObj.checkFrontImage = null;
+                vm.checkObj.checkBackImage = null;
+                console.log(depositService);
             }
-
-            //update account in vm.depositObj in depositService
-            vm.depositObj.account = vm.selectedAccount;
-            vm.depositObj.depositAmount = vm.depositAmount;
-
-            //clear out vm.checkObj in depositService
-            vm.checkObj.checkAmount = null;
-            vm.checkObj.checkFrontImage = null;
-            vm.checkObj.checkBackImage = null;
-            console.log(depositService);
         }
 
+        //cancel editing check or cancel adding check
         function cancelCheck() {
             $ionicPopup.show({
                 title: "Dont Save Check",
