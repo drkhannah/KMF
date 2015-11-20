@@ -57,8 +57,6 @@
         vm.checkBackImage = depositService.checkObj.checkBackImage;
         vm.frontCheckLoading = false;
         vm.backCheckLoading = false;
-        vm.captureCheckForm;
-
 
         activate();
 
@@ -136,10 +134,10 @@
         }
 
         //submit check to alogent server
-        function submitCheck() {
+        function submitCheck($error) {
             //check angular form validation errors
-            if(Object.keys(vm.captureCheckForm.$error).length >= 1) {
-                errorToastService.errorToast(vm.captureCheckForm.$error);
+            if(Object.keys($error).length >= 1) {
+                errorToastService.errorToast($error);
             } else if(vm.checkFrontImage === null){
                 errorToastService.errorToast('Scan Check Front');
             } else if(vm.checkBackImage === null){

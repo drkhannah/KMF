@@ -9079,11 +9079,21 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+input[readonly] {
+  background-color: transparent !important;
+  color: gray; }
+
+input[ng-currency], input[data-ng-currency] {
+  text-align: right; }
+
 .dark-red {
   color: #9D1C23 !important; }
 
 .dark-red-bg {
   background-color: #9D1C23 !important; }
+
+.lightest-yellow-bg {
+  background-color: #FDF6E2 !important; }
 
 .positive-border {
   border: solid 1px #CC0000; }
@@ -9179,3 +9189,27 @@ a[data-ng-click="vm.signin()"] i {
 
 i.icon-make-deposit {
   font-size: 110px; }
+
+div.totals-mismatch-error {
+  font-size: 14px;
+  background-color: #fff;
+  padding: 5px; }
+  div.totals-mismatch-error i {
+    padding-right: 5px;
+    padding-left: 15px;
+    color: #ffc900; }
+
+div.totals-match {
+  font-size: 14px;
+  background-color: #fff;
+  padding: 5px; }
+  div.totals-match i {
+    padding-right: 5px;
+    padding-left: 15px;
+    color: #33cd5f; }
+
+.right {
+  float: right; }
+
+.item-delete .button.icon {
+  color: #CC0000; }

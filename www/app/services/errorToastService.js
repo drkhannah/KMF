@@ -18,7 +18,7 @@ function errorToastService() {
     function errorToast(err){
         service.errorToastMessage = null;
 
-        if(typeof err === 'object' && Object.keys(err).length >= 1){
+        if(typeof err === 'object'){
             var error = Object.keys(err)[0];
             var errorObj = err[error][0];
             var fieldName = errorObj.$name;

@@ -14,7 +14,7 @@
         </form>
     </ion-content>
     <!-- Footer -->
-    <div class="bar bar-footer stacked-footer" data-ng-click="vm.answerQuestion()">
+    <div class="bar bar-footer stacked-footer" data-ng-click="vm.answerQuestion(vm.answerForm.$error)">
         <a class="positive-bg stable">Continue</a>
     </div>
 </ion-view>

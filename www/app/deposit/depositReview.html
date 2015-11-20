@@ -3,7 +3,7 @@
         <button class="button button-icon button-clear ion-ios-close-empty" data-ng-click="vm.cancelDeposit()"></button>
     </ion-nav-buttons>
     <ion-content>
-        <form name="vm.depositReviewForm">
+        <form name="vm.depositReviewForm" novalidate>
             <div class="list">
                 <div class="item item-divider">
                     Summary
@@ -17,29 +17,45 @@
                 </label>
 
                 <!--Deposit Amount-->
-                <label class="item item-input" ng-class="{'assertive-bg': vm.checksTotalAmount !== vm.depositAmount}" ng-cloak>
+                <label class="item item-input" ng-class="{'lightest-yellow-bg': vm.checksTotalAmount !== vm.depositAmount && vm.depositAmount !== null && vm.depositAmount !== undefined}" ng-cloak>
                     <span class="input-label">Total</span>
                     <input data-ng-currency type="text" required name="depositAmount" data-ng-model="vm.depositAmount" placeholder="Total Deposit Amount" data-ng-change="vm.depositAmountChange()">
                 </label>
 
                 <!-- Checks Total Amount -->
-                <label class="item item-input" ng-cloak>
+                <label class="item item-input" ng-class="{'lightest-yellow-bg': vm.checksTotalAmount !== vm.depositAmount && vm.depositAmount !== null && vm.depositAmount !== undefined}" ng-cloak>
                     <span class="input-label">Captured:</span>
-                    <input data-ng-currency type="text" readonly data-ng-model="vm.checksTotalAmount" placeholder="Checks List Total">
+                    <input class="light-bg" data-ng-currency type="text" readonly data-ng-model="vm.checksTotalAmount" placeholder="Checks List Total">
                 </label>
+
+                <!-- Error for Totals Mismatch -->
+                <div class="totals-mismatch-error" ng-show="vm.checksTotalAmount !== vm.depositAmount && vm.depositAmount !== null && vm.depositAmount !== undefined" ng-cloak>
+                    <i class="icon ion-android-warning"></i>
+                    Totals do not match. Add or edit checks
+                </div>
+
+                <!-- show if totals match -->
+                <div class="totals-match" ng-show="vm.checksTotalAmount === vm.depositAmount && vm.depositAmount !== null && vm.depositAmount !== undefined" ng-cloak>
+                    <i class="icon ion-ios-checkmark-outline"></i>
+                    Totals Match
+                </div>
+
                 <!-- Submitted Checks List -->
-                <div class="item item-divider" data-ng-show="vm.type === 'SINGLE'">
+                <div class="item item-divider" data-ng-show="vm.depositObj.type === 'SINGLE'">
                     Check
+                    <a class="right" data-ng-click="vm.editClick()">{{vm.editToggle}}</a>
                 </div>
-                <div class="item item-divider" data-ng-show="vm.type === 'MULTIPLE'">
+                <div class="item item-divider" data-ng-show="vm.depositObj.type === 'MULTIPLE'">
                     Saved Checks
+                    <a class="right" data-ng-click="vm.editClick()">{{vm.editToggle}}</a>
                 </div>
-                <ion-list>
+                <ion-list show-delete="vm.shouldShowDelete">
                     <ion-item class="item item-thumbnail-right" data-ng-repeat="check in vm.checks">
                         <h4>{{check.checkAmount | currency}}</h4>
-                        <ion-option-button data-ng-show="vm.type === 'MULTIPLE'" class="button-positive" data-ng-click="vm.deleteCheck($index)">Delete</ion-option-button>
-                        <ion-option-button class="button-assertive" data-ng-click="vm.retake(check, vm.selectedAccount)">Retake</ion-option-button>
                         <img class="check-thumbnail-deposit-review" data-ng-src="{{check.checkFrontImage}}">
+                        <ion-delete-button data-ng-show="vm.depositObj.type === 'MULTIPLE'" class="button-positive ion-minus-circled" data-ng-click="vm.deleteCheck($index)"></ion-delete-button>
+                        <ion-option-button class="button-assertive" data-ng-click="vm.retake(check, vm.selectedAccount)">Retake</ion-option-button>
+
                     </ion-item>
                 </ion-list>
             </div>
@@ -48,6 +64,6 @@
     <!-- Footer -->
     <div class="bar bar-footer stacked-footer">
         <a class="clear-bg royal royal-border add-check-link" data-ng-show="vm.depositObj.type === 'MULTIPLE' || vm.depositObj.checks.length === 0" data-ng-click="vm.addCheck()">Add Check</a>
-        <a class="royal-bg stable full-stacked-footer-link" data-ng-click="vm.completeDeposit()">Complete Deposit</a>
+        <a class="royal-bg stable full-stacked-footer-link" data-ng-click="vm.completeDeposit(vm.depositReviewForm.$error)">Complete Deposit</a>
     </div>
 </ion-view>

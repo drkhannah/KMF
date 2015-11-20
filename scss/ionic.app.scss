@@ -8,7 +8,6 @@ For example, you might change some of the default colors:
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #CC0000 !default;
-$darkRed:                         #9D1C23 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
@@ -17,11 +16,24 @@ $royal:                           #75B0D4 !default;
 $dark:                            #444 !default;
 
 
+$lightestYellow:                  #FDF6E2 !default;
+$darkRed:                         #9D1C23 !default;
+
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic.scss";
+
+input[readonly]{
+  background-color: transparent !important;
+  color: gray;
+}
+
+input[ng-currency], input[data-ng-currency]{
+  text-align: right;
+}
 
 .dark-red {
   color: $darkRed !important;
@@ -29,6 +41,10 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 .dark-red-bg {
   background-color: $darkRed !important;
+}
+
+.lightest-yellow-bg {
+  background-color: $lightestYellow !important;
 }
 
 .positive-border{
@@ -187,6 +203,36 @@ i.icon-make-deposit{
 //
 //Deposit Review view styles
 //
+
+div.totals-mismatch-error{
+  font-size: 14px;
+  background-color: $light;
+  padding: 5px;
+  i{
+    padding-right: 5px;
+    padding-left: 15px;
+    color: $energized;
+  }
+}
+
+div.totals-match{
+  font-size: 14px;
+  background-color: $light;
+  padding: 5px;
+  i{
+    padding-right: 5px;
+    padding-left: 15px;
+    color: $balanced;
+  }
+}
+
+.right{
+  float: right;
+}
+
+.item-delete .button.icon {
+  color: $positive;
+}
 
 
 

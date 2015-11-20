@@ -8,13 +8,13 @@
                 <!--Deposit Amount-->
                 <label class="item item-input" ng-cloak>
                     <span class="input-label">Total Deposit</span>
-                    <input data-ng-currency type="text" required name="depositAmount" data-ng-model="vm.depositAmount" placeholder="Total Deposit Amount" data-ng-change="vm.depositAmountChange()">
+                    <input data-ng-currency type="text" name="depositAmount" data-ng-model="vm.depositAmount" placeholder="Total Deposit Amount" data-ng-change="vm.depositAmountChange()">
                 </label>
 
                 <!-- Account Select -->
                 <label class="item item-input item-select" ng-cloak>
                     <span class="input-label">Account</span>
-                    <select name="account" required data-ng-model="vm.selectedAccount" data-ng-change="vm.accountChange()">
+                    <select name="account"  data-ng-model="vm.selectedAccount" data-ng-change="vm.accountChange()">
                         <option ng-repeat="account in vm.accounts">{{account.accountNumber}}</option>
                     </select>
                 </label>
@@ -59,7 +59,7 @@
     </ion-content>
     <!-- Footer -->
     <div class="bar bar-footer royal-bg stable" >
-        <a class="title" data-ng-click="vm.submitCheck()">
+        <a class="title" data-ng-click="vm.submitCheck(vm.captureCheckForm.$error)">
             <span ng-if="vm.depositObj.type === 'SINGLE'">Submit Check</span>
             <span ng-if="vm.depositObj.type === 'MULTIPLE'">Add Check</span>
         </a>

@@ -7,7 +7,7 @@
         .controller('DepositReviewController', DepositReviewController);
 
     stateProvider.$inject = ['$stateProvider'];
-    DepositReviewController.$inject = ['accountsPromise', 'depositService', '$state', '$ionicHistory', 'errorToastService'];
+    DepositReviewController.$inject = ['accountsPromise', 'depositService', '$state', '$ionicHistory', 'errorToastService', '$ionicPopup'];
 
     /* @ngInject */
     function stateProvider($stateProvider){
@@ -31,7 +31,7 @@
     }
 
     /* @ngInject */
-    function DepositReviewController(accountsPromise, depositService, $state, $ionicHistory, errorToastService) {
+    function DepositReviewController(accountsPromise, depositService, $state, $ionicHistory, errorToastService, $ionicPopup) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -43,6 +43,7 @@
         vm.deleteCheck = deleteCheck;
         vm.retake = retake;
         vm.getChecksTotal = getChecksTotal;
+        vm.editClick= editClick;
         vm.cancelDeposit = depositService.cancelDeposit;
         vm.title = 'Deposit Review';
         vm.checkObj = depositService.checkObj;
@@ -52,7 +53,8 @@
         vm.depositAmount = depositService.depositObj.depositAmount;
         vm.checksTotalAmount = depositService.depositObj.checksTotalAmount;
         vm.checks = depositService.depositObj.checks;
-        vm.depositReviewForm;
+        vm.shouldShowDelete = false;
+        vm.editToggle = 'Edit';
 
         activate();
 
@@ -64,6 +66,16 @@
             vm.checks = vm.depositObj.checks;
             vm.getChecksTotal();
             vm.depositObj.checksTotalAmount = vm.checksTotalAmount;
+        }
+
+        //show or hide delete buttons on checks
+        function editClick() {
+            vm.shouldShowDelete = !vm.shouldShowDelete;
+            if(vm.editToggle === "Edit"){
+                vm.editToggle = "Done";
+            } else {
+                vm.editToggle = "Edit";
+            }
         }
 
         // calculate the amounts of checks in checks list and total them
@@ -90,10 +102,35 @@
 
         //Delete check from checks list, then retotal checks amount total
         function deleteCheck(index) {
-            vm.depositObj.checks.splice(index, 1);
-            vm.getChecksTotal();
-            vm.depositObj.checksTotalAmount = vm.checksTotalAmount;
-            console.log (depositService);
+            $ionicPopup.show({
+                title: "Delete Check?",
+                template: "Are you sure you want to delete this check from the deposit?",
+                buttons: [{
+                    text: 'No',
+                    type: 'button-stable',
+                    onTap: function(e) {
+                        // e.preventDefault() will stop the popup from closing when tapped.
+                        return false;
+                    }
+                }, {
+                    text: 'YES',
+                    type: 'button-positive',
+                    onTap: function(e) {
+                        // Returning a value will cause the promise to resolve with the given value.
+                        return true;
+                    }
+                }]
+            }).then(function(res) {
+                if(res) {
+                    vm.depositObj.checks.splice(index, 1);
+                    vm.getChecksTotal();
+                    vm.depositObj.checksTotalAmount = vm.checksTotalAmount;
+                    console.log (depositService);
+                } else {
+                    console.log("Don't Delete Check");
+                }
+            });
+
         }
 
         //retake sends checkId to to capture-check view
@@ -116,9 +153,9 @@
         }
 
         // completes deposit
-        function completeDeposit() {
-            if(Object.keys(vm.depositReviewForm.$error).length >= 1){
-                errorToastService.errorToast(vm.depositReviewForm.$error);
+        function completeDeposit($error) {
+            if(Object.keys($error).length >= 1){
+                errorToastService.errorToast($error);
             } else if(vm.checksTotalAmount !== vm.depositAmount){
                 errorToastService.errorToast('Total & Captured Must Match');
             } else {

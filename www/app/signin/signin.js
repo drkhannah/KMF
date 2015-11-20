@@ -43,8 +43,10 @@
 
         }
 
-        function signin(){
-            if(signinService.username === 'admin' && signinService.password === 'admin') {
+        function signin($error){
+            if(Object.keys($error).length >= 1){
+                errorToastService.errorToast($error);
+            } else if(signinService.username === 'admin' && signinService.password === 'admin') {
                 signinService.signin().then(function () {
                     signinService.namePass = true;
                     $ionicHistory.nextViewOptions({
@@ -54,7 +56,7 @@
                     $state.go('securityQuestions');
                 })
             } else {
-                errorToastService.errorToast(vm.signinForm.$error)
+                errorToastService.errorToast('Username or Password Incorrect');
             }
         }
 

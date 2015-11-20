@@ -14,7 +14,7 @@
                     <input name="password" placeholder="Password:" type="password" data-ng-model="vm.password" required data-ng-change="vm.passwordChange()">
                 </label>
                 <!-- Signin Button -->
-                <a class="item item-positive text-center" href="#" data-ng-click="vm.signin()">
+                <a class="item item-positive text-center" href="#" data-ng-click="vm.signin(vm.signinForm.$error)">
                     <i class="icon ion-android-lock"></i>
                     Secure Signin
                 </a>

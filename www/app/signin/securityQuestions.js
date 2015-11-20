@@ -40,8 +40,10 @@
         function activate() {
         }
 
-        function answerQuestion(){
-            if(signinService.userAnswer === 'answer') {
+        function answerQuestion($error){
+            if(Object.keys($error).length >= 1){
+                errorToastService.errorToast($error);
+            } else if(signinService.userAnswer === 'answer') {
                 signinService.submitAnswer().then(function () {
                     signinService.questionAnswered = true;
                     $ionicHistory.nextViewOptions({
@@ -51,7 +53,7 @@
                     $state.go('terms');
                 })
             } else {
-                errorToastService.errorToast(vm.answerForm.$error)
+                errorToastService.errorToast('Incorrect Answer');
             }
         }
 
