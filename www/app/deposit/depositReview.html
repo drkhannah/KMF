@@ -3,45 +3,47 @@
         <button class="button button-icon button-clear ion-ios-close-empty" data-ng-click="vm.cancelDeposit()"></button>
     </ion-nav-buttons>
     <ion-content>
-        <div class="list">
-            <div class="item item-divider">
-                Summary
-            </div>
-            <!-- Account Select -->
-            <label class="item item-input item-select">
-                <span class="input-label">Account</span>
-                <select name="account" data-ng-model="vm.selectedAccount" data-ng-change="vm.accountChange()">
-                    <option ng-repeat="account in vm.accounts">{{account.accountNumber}}</option>
-                </select>
-            </label>
+        <form name="vm.depositReviewForm">
+            <div class="list">
+                <div class="item item-divider">
+                    Summary
+                </div>
+                <!-- Account Select -->
+                <label class="item item-input item-select" ng-cloak>
+                    <span class="input-label">Account</span>
+                    <select name="account" required data-ng-model="vm.selectedAccount" data-ng-change="vm.accountChange()">
+                        <option ng-repeat="account in vm.accounts">{{account.accountNumber}}</option>
+                    </select>
+                </label>
 
-            <!--Deposit Amount-->
-            <label class="item item-input" ng-cloak>
-                <span class="input-label">Deposit</span>
-                <input data-ng-currency type="text" data-ng-required="true" name="depositAmount" data-ng-model="vm.depositAmount" placeholder="Deposit Amount" data-ng-change="vm.depositAmountChange()">
-            </label>
+                <!--Deposit Amount-->
+                <label class="item item-input" ng-class="{'assertive-bg': vm.checksTotalAmount !== vm.depositAmount}" ng-cloak>
+                    <span class="input-label">Total</span>
+                    <input data-ng-currency type="text" required name="depositAmount" data-ng-model="vm.depositAmount" placeholder="Total Deposit Amount" data-ng-change="vm.depositAmountChange()">
+                </label>
 
-            <!-- Checks Total Amount -->
-            <label class="item item-input">
-                <span class="input-label">Total:</span>
-                <input data-ng-currency type="text" readonly data-ng-model="vm.checksTotalAmount" placeholder="Checks List Total">
-            </label>
-            <!-- Submitted Checks List -->
-            <div class="item item-divider" data-ng-show="vm.type === 'SINGLE'">
-                Check
+                <!-- Checks Total Amount -->
+                <label class="item item-input" ng-cloak>
+                    <span class="input-label">Captured:</span>
+                    <input data-ng-currency type="text" readonly data-ng-model="vm.checksTotalAmount" placeholder="Checks List Total">
+                </label>
+                <!-- Submitted Checks List -->
+                <div class="item item-divider" data-ng-show="vm.type === 'SINGLE'">
+                    Check
+                </div>
+                <div class="item item-divider" data-ng-show="vm.type === 'MULTIPLE'">
+                    Saved Checks
+                </div>
+                <ion-list>
+                    <ion-item class="item item-thumbnail-right" data-ng-repeat="check in vm.checks">
+                        <h4>{{check.checkAmount | currency}}</h4>
+                        <ion-option-button data-ng-show="vm.type === 'MULTIPLE'" class="button-positive" data-ng-click="vm.deleteCheck($index)">Delete</ion-option-button>
+                        <ion-option-button class="button-assertive" data-ng-click="vm.retake(check, vm.selectedAccount)">Retake</ion-option-button>
+                        <img class="check-thumbnail-deposit-review" data-ng-src="{{check.checkFrontImage}}">
+                    </ion-item>
+                </ion-list>
             </div>
-            <div class="item item-divider" data-ng-show="vm.type === 'MULTIPLE'">
-                Saved Checks
-            </div>
-            <ion-list>
-                <ion-item class="item item-thumbnail-right" data-ng-repeat="check in vm.checks">
-                    <h4>{{check.checkAmount | currency}}</h4>
-                    <ion-option-button data-ng-show="vm.type === 'MULTIPLE'" class="button-positive" data-ng-click="vm.deleteCheck($index)">Delete</ion-option-button>
-                    <ion-option-button class="button-assertive" data-ng-click="vm.retake(check, vm.selectedAccount)">Retake</ion-option-button>
-                    <img class="check-thumbnail-deposit-review" data-ng-src="{{check.checkFrontImage}}">
-                </ion-item>
-            </ion-list>
-        </div>
+        </form>
     </ion-content>
     <!-- Footer -->
     <div class="bar bar-footer stacked-footer">

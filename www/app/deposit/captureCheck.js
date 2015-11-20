@@ -220,7 +220,7 @@
                     vm.checkObj.checkBackImage = null;
                     console.log(depositService);
                 } else {
-                    console.log("Don't Cancel Check Submition");
+                    console.log("Don't Cancel Check Submistion");
                 }
             });
         }

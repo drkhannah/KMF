@@ -15,7 +15,7 @@
                 <label class="item item-input item-select" ng-cloak>
                     <span class="input-label">Account</span>
                     <select name="account" required data-ng-model="vm.selectedAccount" data-ng-change="vm.accountChange()">
-                        <option data-placeholder="Select Account" ng-repeat="account in vm.accounts">{{account.accountNumber}}</option>
+                        <option ng-repeat="account in vm.accounts">{{account.accountNumber}}</option>
                     </select>
                 </label>
 
@@ -25,35 +25,35 @@
                     <input data-ng-currency type="text" required name="checkAmount" data-ng-model="vm.checkAmount" placeholder="Check Amount" data-ng-change="vm.checkAmountChange()">
                 </label>
 
-                    <!-- Scan Check Front Button -->
-                    <div class="card" data-ng-click="vm.miSnapCheckFront()" >
-                        <div class="item item-text-wrap">
-                            <div class="item item-icon-left">
-                                <h2 data-ng-hide="vm.checkFrontImage !== null">Capture Check Front</h2>
-                                <img class="capture-check-thumbnail" data-ng-show="vm.checkFrontImage !== '' && vm.checkFrontImage !== null" data-ng-src="{{vm.checkFrontImage}}"><!-- data:image/jpeg;base64, -->
-                                <i class="icon ion-camera" data-ng-hide="vm.checkFrontImage !== null || vm.frontCheckLoading"></i>
-                                <i class="icon ion-checkmark-round" data-ng-hide="vm.checkFrontImage === null || vm.frontCheckLoading"></i>
-                                <i class="icon" data-ng-show="vm.frontCheckLoading">
-                                    <ion-spinner class="spinner-positive" data-icon="lines"></ion-spinner>
-                                </i>
-                            </div>
+                <!-- Scan Check Front Button -->
+                <div class="card" data-ng-click="vm.miSnapCheckFront()" >
+                    <div class="item item-text-wrap">
+                        <div class="item item-icon-left">
+                            <h2 data-ng-hide="vm.checkFrontImage !== null">Capture Check Front</h2>
+                            <img class="capture-check-thumbnail" data-ng-show="vm.checkFrontImage !== '' && vm.checkFrontImage !== null" data-ng-src="{{vm.checkFrontImage}}"><!-- data:image/jpeg;base64, -->
+                            <i class="icon ion-camera" data-ng-hide="vm.checkFrontImage !== null || vm.frontCheckLoading"></i>
+                            <i class="icon ion-checkmark-round" data-ng-hide="vm.checkFrontImage === null || vm.frontCheckLoading"></i>
+                            <i class="icon" data-ng-show="vm.frontCheckLoading">
+                                <ion-spinner class="spinner-positive" data-icon="lines"></ion-spinner>
+                            </i>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Scan Check Back Button -->
-                    <div class="card" data-ng-click="vm.miSnapCheckBack()">
-                        <div class="item item-text-wrap">
-                            <div class="item item-icon-left">
-                                <h2 data-ng-hide="vm.checkBackImage !== null">Capture Check Back</h2>
-                                <img class="capture-check-thumbnail" data-ng-show="vm.checkBackImage !== null" data-ng-src="{{vm.checkBackImage}}">
-                                <i class="icon icon-large ion-camera" data-ng-hide="vm.checkBackImage !== null || vm.backCheckLoading"></i>
-                                <i class="icon ion-checkmark-round" data-ng-hide="vm.checkBackImage === null || vm.backCheckLoading"></i>
-                                <i class="icon" data-ng-show="vm.backCheckLoading">
-                                    <ion-spinner class="spinner-positive" data-icon="lines"></ion-spinner>
-                                </i>
-                            </div>
+                <!-- Scan Check Back Button -->
+                <div class="card" data-ng-click="vm.miSnapCheckBack()">
+                    <div class="item item-text-wrap">
+                        <div class="item item-icon-left">
+                            <h2 data-ng-hide="vm.checkBackImage !== null">Capture Check Back</h2>
+                            <img class="capture-check-thumbnail" data-ng-show="vm.checkBackImage !== null" data-ng-src="{{vm.checkBackImage}}">
+                            <i class="icon icon-large ion-camera" data-ng-hide="vm.checkBackImage !== null || vm.backCheckLoading"></i>
+                            <i class="icon ion-checkmark-round" data-ng-hide="vm.checkBackImage === null || vm.backCheckLoading"></i>
+                            <i class="icon" data-ng-show="vm.backCheckLoading">
+                                <ion-spinner class="spinner-positive" data-icon="lines"></ion-spinner>
+                            </i>
                         </div>
                     </div>
+                </div>
             </div>
         </form>
     </ion-content>

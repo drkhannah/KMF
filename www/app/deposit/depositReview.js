@@ -7,7 +7,7 @@
         .controller('DepositReviewController', DepositReviewController);
 
     stateProvider.$inject = ['$stateProvider'];
-    DepositReviewController.$inject = ['accountsPromise', 'depositService', '$state', '$ionicHistory'];
+    DepositReviewController.$inject = ['accountsPromise', 'depositService', '$state', '$ionicHistory', 'errorToastService'];
 
     /* @ngInject */
     function stateProvider($stateProvider){
@@ -31,7 +31,7 @@
     }
 
     /* @ngInject */
-    function DepositReviewController(accountsPromise, depositService, $state, $ionicHistory) {
+    function DepositReviewController(accountsPromise, depositService, $state, $ionicHistory, errorToastService) {
         /* jshint validthis: true */
         var vm = this;
 
@@ -52,6 +52,7 @@
         vm.depositAmount = depositService.depositObj.depositAmount;
         vm.checksTotalAmount = depositService.depositObj.checksTotalAmount;
         vm.checks = depositService.depositObj.checks;
+        vm.depositReviewForm;
 
         activate();
 
@@ -116,9 +117,15 @@
 
         // completes deposit
         function completeDeposit() {
-            $ionicHistory.clearCache();
-            $state.go('app.deposit-completed');
-            console.log (depositService);
+            if(Object.keys(vm.depositReviewForm.$error).length >= 1){
+                errorToastService.errorToast(vm.depositReviewForm.$error);
+            } else if(vm.checksTotalAmount !== vm.depositAmount){
+                errorToastService.errorToast('Total & Captured Must Match');
+            } else {
+                $ionicHistory.clearCache();
+                $state.go('app.deposit-completed');
+                console.log (depositService);
+            }
         }
 
     }
