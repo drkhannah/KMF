@@ -18,7 +18,10 @@ function errorToastService() {
     function errorToast(err){
         service.errorToastMessage = null;
 
-        if(typeof err === 'object'){
+        if(typeof err === 'string'){
+            service.errorToastMessage = err;
+            notie.alert(2, '<i class="icon ion-android-warning"></i>' + service.errorToastMessage, 2);
+        } else {
             var error = Object.keys(err)[0];
             var errorObj = err[error][0];
             var fieldName = errorObj.$name;
@@ -27,9 +30,6 @@ function errorToastService() {
                service.errorToastMessage = 'The ' + fieldName + ' field is ' + error;
                 notie.alert(2, '<i class="icon ion-android-warning"></i>' + service.errorToastMessage, 2);
             }
-        } else if(typeof err === 'string'){
-            service.errorToastMessage = err;
-            notie.alert(2, '<i class="icon ion-android-warning"></i>' + service.errorToastMessage, 2);
         }
 
     }

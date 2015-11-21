@@ -8,13 +8,13 @@
                 <!--Deposit Amount-->
                 <label class="item item-input" ng-cloak>
                     <span class="input-label">Total Deposit</span>
-                    <input data-ng-currency type="text" name="depositAmount" data-ng-model="vm.depositAmount" placeholder="Total Deposit Amount" data-ng-change="vm.depositAmountChange()">
+                    <input data-ng-currency required type="text" name="depositAmount" data-ng-model="vm.depositAmount" placeholder="Total Deposit Amount" data-ng-change="vm.depositAmountChange()">
                 </label>
 
                 <!-- Account Select -->
                 <label class="item item-input item-select" ng-cloak>
                     <span class="input-label">Account</span>
-                    <select name="account"  data-ng-model="vm.selectedAccount" data-ng-change="vm.accountChange()">
+                    <select name="account" required data-ng-model="vm.selectedAccount" data-ng-change="vm.accountChange()">
                         <option ng-repeat="account in vm.accounts">{{account.accountNumber}}</option>
                     </select>
                 </label>
@@ -27,12 +27,12 @@
 
                 <!-- Scan Check Front Button -->
                 <div class="card" data-ng-click="vm.miSnapCheckFront()" >
-                    <div class="item item-text-wrap">
-                        <div class="item item-icon-left">
-                            <h2 data-ng-hide="vm.checkFrontImage !== null">Capture Check Front</h2>
-                            <img class="capture-check-thumbnail" data-ng-show="vm.checkFrontImage !== '' && vm.checkFrontImage !== null" data-ng-src="{{vm.checkFrontImage}}"><!-- data:image/jpeg;base64, -->
-                            <i class="icon ion-camera" data-ng-hide="vm.checkFrontImage !== null || vm.frontCheckLoading"></i>
-                            <i class="icon ion-checkmark-round" data-ng-hide="vm.checkFrontImage === null || vm.frontCheckLoading"></i>
+                    <div class="item item-text-wrap" data-ng-class="{'lightest-yellow-bg': vm.checkFrontImage === 'error'}">
+                        <div class="item item-icon-right" data-ng-class="{'lightest-yellow-bg': vm.checkFrontImage === 'error'}">
+                            <h2 data-ng-show="vm.checkFrontImage === null || vm.checkFrontImage === 'error'">Capture Check Front</h2>
+                            <img class="capture-check-thumbnail" data-ng-show="vm.checkFrontImage !== 'error' && vm.checkFrontImage !== null" data-ng-src="{{vm.checkFrontImage}}"><!-- data:image/jpeg;base64, -->
+                            <i class="icon ion-ios-camera-outline positive" data-ng-hide="vm.checkFrontImage !== null || vm.frontCheckLoading"></i>
+                            <i class="icon ion-ios-reverse-camera-outline energized" data-ng-show="vm.checkFrontImage === 'error' && vm.checkFrontImage !== null && !vm.frontCheckLoading"><span class="rescan-text">Rescan</span></i>
                             <i class="icon" data-ng-show="vm.frontCheckLoading">
                                 <ion-spinner class="spinner-positive" data-icon="lines"></ion-spinner>
                             </i>
@@ -42,12 +42,12 @@
 
                 <!-- Scan Check Back Button -->
                 <div class="card" data-ng-click="vm.miSnapCheckBack()">
-                    <div class="item item-text-wrap">
-                        <div class="item item-icon-left">
-                            <h2 data-ng-hide="vm.checkBackImage !== null">Capture Check Back</h2>
-                            <img class="capture-check-thumbnail" data-ng-show="vm.checkBackImage !== null" data-ng-src="{{vm.checkBackImage}}">
-                            <i class="icon icon-large ion-camera" data-ng-hide="vm.checkBackImage !== null || vm.backCheckLoading"></i>
-                            <i class="icon ion-checkmark-round" data-ng-hide="vm.checkBackImage === null || vm.backCheckLoading"></i>
+                    <div class="item item-text-wrap" data-ng-class="{'lightest-yellow-bg': vm.checkBackImage === 'error'}">
+                        <div class="item item-icon-right" data-ng-class="{'lightest-yellow-bg': vm.checkBackImage === 'error'}">
+                            <h2 data-ng-show="vm.checkBackImage === null || vm.checkBackImage === 'error'">Capture Check Back</h2>
+                            <img class="capture-check-thumbnail" data-ng-show="vm.checkBackImage !== 'error' && vm.checkBackImage !== null" data-ng-src="{{vm.checkBackImage}}"><!-- data:image/jpeg;base64, -->
+                            <i class="icon ion-ios-camera-outline positive" data-ng-hide="vm.checkBackImage !== null || vm.backCheckLoading"></i>
+                            <i class="icon ion-ios-reverse-camera-outline energized" data-ng-show="vm.checkBackImage === 'error' && vm.checkBackImage !== null && !vm.backCheckLoading"><span class="rescan-text">Rescan</span></i>
                             <i class="icon" data-ng-show="vm.backCheckLoading">
                                 <ion-spinner class="spinner-positive" data-icon="lines"></ion-spinner>
                             </i>

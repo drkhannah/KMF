@@ -53,7 +53,7 @@
                 vm.depositObj.mode = 'CREATE';
                 console.log(depositService);
                 $ionicHistory.clearCache();
-                $state.go('app.deposit-review');
+                $state.go('app.capture-check');
 
             }
 
@@ -64,7 +64,7 @@
                 vm.depositObj.mode = 'CREATE';
                 console.log(depositService);
                 $ionicHistory.clearCache();
-                $state.go('app.deposit-review');
+                $state.go('app.capture-check');
 
             }
         }

@@ -9190,6 +9190,11 @@ a[data-ng-click="vm.signin()"] i {
 i.icon-make-deposit {
   font-size: 110px; }
 
+span.rescan-text {
+  font-size: 15px;
+  margin-left: 5px;
+  font-weight: bold; }
+
 div.totals-mismatch-error {
   font-size: 14px;
   background-color: #fff;
