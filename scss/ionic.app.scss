@@ -18,6 +18,7 @@ $dark:                            #444 !default;
 
 $lightestYellow:                  #FDF6E2 !default;
 $darkRed:                         #9D1C23 !default;
+$lightGray:                       #DDDDDD !default;
 
 
 // The path for our ionicons font files, relative to the built CSS in www/css
@@ -243,7 +244,27 @@ div.totals-match{
   color: $positive;
 }
 
+//
+//History view styles
+//
 
+.history-filter-tabs .tabs{
+  position: relative;
+  top: 0;
+  a{
+    border-right: solid 1px $lightGray;
+    border-top: solid 1px $lightGray;
+
+  }
+}
+
+.history-filter-tabs .tabs .tab-item-active{
+  background-color: $lightGray;
+}
+
+.history-filter-tabs .tabs:last-child{
+  border:none;
+}
 
 
 

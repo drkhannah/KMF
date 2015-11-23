@@ -50,7 +50,7 @@
             if(!signinService.access){
                 $state.go('signin');
             } else {
-                $state.go('app.deposit')
+                $state.go('app.history')
             }
         }
 

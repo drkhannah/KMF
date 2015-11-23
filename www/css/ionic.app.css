@@ -9218,3 +9218,16 @@ div.totals-match {
 
 .item-delete .button.icon {
   color: #CC0000; }
+
+.history-filter-tabs .tabs {
+  position: relative;
+  top: 0; }
+  .history-filter-tabs .tabs a {
+    border-right: solid 1px #DDDDDD;
+    border-top: solid 1px #DDDDDD; }
+
+.history-filter-tabs .tabs .tab-item-active {
+  background-color: #DDDDDD; }
+
+.history-filter-tabs .tabs:last-child {
+  border: none; }
