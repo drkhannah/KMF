@@ -9083,6 +9083,20 @@ input[readonly] {
   background-color: transparent !important;
   color: gray; }
 
+.no-background-img {
+  background-image: none; }
+
+.list-inset {
+  margin-bottom: 0;
+  margin-top: 0; }
+  .list-inset .item {
+    border-right: none;
+    border-left: none; }
+  .list-inset .item-divider {
+    background-color: #f8f8f8;
+    border: none;
+    padding: 10px; }
+
 input[ng-currency], input[data-ng-currency] {
   text-align: right; }
 
@@ -9101,6 +9115,12 @@ input[ng-currency], input[data-ng-currency] {
 .positive-border {
   border: solid 1px #CC0000; }
 
+.light-border {
+  border: solid 1px #fff; }
+
+.balanced-border {
+  border: solid 1px #33cd5f; }
+
 .royal-border {
   border: solid 1px #75B0D4; }
 
@@ -9111,19 +9131,11 @@ img.check-image {
   width: 100%;
   height: 100%; }
 
-h4 span.detail-info {
-  font-size: .6em;
-  font-weight: normal; }
-
 input.checks-total-amount-input {
   text-align: right; }
 
 input.deposit-amount-input {
   text-align: right; }
-
-img.check-thumbnail {
-  height: 50%;
-  vertical-align: middle; }
 
 img.check-thumbnail-deposit-review {
   height: 50px; }
@@ -9141,7 +9153,7 @@ img.capture-check-thumbnail {
   height: 100px; }
 
 .pane, .view {
-  background-color: #F8F8F8; }
+  background-color: #f8f8f8; }
 
 .stacked-footer {
   height: auto;
@@ -9199,28 +9211,40 @@ span.rescan-text {
   font-weight: bold; }
 
 div.totals-mismatch-error {
-  font-size: 14px;
-  background-color: #fff;
-  padding: 5px; }
+  font-size: 16px;
+  background-color: #ffc900;
+  padding: 5px;
+  color: white; }
   div.totals-mismatch-error i {
     padding-right: 5px;
-    padding-left: 15px;
-    color: #ffc900; }
+    padding-left: 15px; }
 
 div.totals-match {
-  font-size: 14px;
-  background-color: #fff;
-  padding: 5px; }
+  font-size: 16px;
+  background-color: #33cd5f;
+  padding: 5px;
+  color: white; }
   div.totals-match i {
     padding-right: 5px;
-    padding-left: 15px;
-    color: #33cd5f; }
+    padding-left: 15px; }
 
 .right {
   float: right; }
 
 .item-delete .button.icon {
   color: #CC0000; }
+
+.deposit-complete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto; }
+  .deposit-complete i {
+    margin-top: 100px;
+    display: block;
+    font-size: 100px; }
 
 .history-filter-tabs .tabs {
   position: relative;
@@ -9237,12 +9261,19 @@ div.totals-match {
 
 .history-list {
   border: none; }
+  .history-list h2 {
+    margin-bottom: 7px; }
   .history-list .item {
     border-left: none;
     border-right: none; }
 
 .history-list-group {
-  border: none; }
+  border: none;
+  padding-bottom: 0; }
   .history-list-group .history-list-group-label {
     margin: 10px;
     font-weight: bold; }
+
+.history-detail-list {
+  margin-bottom: 0;
+  border: none; }

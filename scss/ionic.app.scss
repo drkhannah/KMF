@@ -32,6 +32,26 @@ input[readonly]{
   color: gray;
 }
 
+.no-background-img{
+  background-image: none;
+}
+
+.list-inset{
+  margin-bottom:0;
+  margin-top:0;
+
+  .item{
+    border-right:none;
+    border-left:none
+  }
+
+  .item-divider{
+    background-color: $stable;
+    border:none;
+    padding: 10px
+  }
+}
+
 input[ng-currency], input[data-ng-currency]{
   text-align: right;
 }
@@ -56,6 +76,14 @@ input[ng-currency], input[data-ng-currency]{
   border: solid 1px $positive;
 }
 
+.light-border{
+  border: solid 1px $light;
+}
+
+.balanced-border{
+  border: solid 1px $balanced;
+}
+
 .royal-border{
   border: solid 1px $royal;
 }
@@ -69,22 +97,12 @@ img.check-image {
   height: 100%;
 }
 
-h4 span.detail-info {
-  font-size: .6em;
-  font-weight: normal;
-}
-
 input.checks-total-amount-input {
   text-align:right;
 }
 
 input.deposit-amount-input {
   text-align:right;
-}
-
-img.check-thumbnail {
-  height: 50%;
-  vertical-align: middle;
 }
 
 img.check-thumbnail-deposit-review {
@@ -111,7 +129,7 @@ img.capture-check-thumbnail {
 }
 
 .pane, .view {
-  background-color: #F8F8F8;
+  background-color: $stable;
 }
 
 //
@@ -219,24 +237,24 @@ span.rescan-text{
 //
 
 div.totals-mismatch-error{
-  font-size: 14px;
-  background-color: $light;
+  font-size: 16px;
+  background-color: $energized;
   padding: 5px;
+  color: white;
   i{
     padding-right: 5px;
     padding-left: 15px;
-    color: $energized;
   }
 }
 
 div.totals-match{
-  font-size: 14px;
-  background-color: $light;
+  font-size: 16px;
+  background-color: $balanced;
   padding: 5px;
+  color: white;
   i{
     padding-right: 5px;
     padding-left: 15px;
-    color: $balanced;
   }
 }
 
@@ -246,6 +264,24 @@ div.totals-match{
 
 .item-delete .button.icon {
   color: $positive;
+}
+
+//
+//depositComplete view styles
+//
+.deposit-complete {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+
+  i{
+    margin-top: 100px;
+    display: block;
+    font-size: 100px;
+  }
 }
 
 //
@@ -272,6 +308,11 @@ div.totals-match{
 
 .history-list{
   border: none;
+
+  h2{
+    margin-bottom: 7px;
+  }
+
   .item{
     border-left: none;
     border-right: none;
@@ -280,10 +321,16 @@ div.totals-match{
 
 .history-list-group{
   border:none;
+  padding-bottom:0;
   .history-list-group-label{
     margin: 10px;
     font-weight: bold;
   }
+}
+
+.history-detail-list{
+  margin-bottom: 0;
+  border:none;
 }
 
 

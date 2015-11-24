@@ -5,6 +5,7 @@
       <ion-tab title="Recent" on-select="vm.listFilter = {orderBy:date}"></ion-tab>
       <ion-tab title="Approved" on-select="vm.listFilter = 'APPROVE'"></ion-tab>
       <ion-tab title="Rejected" on-select="vm.listFilter = 'REJECT'"></ion-tab>
+      <ion-tab title="Released" on-select="vm.listFilter = 'RELEASE'"></ion-tab>
     </ion-tabs>
     <!-- Deposits List -->
     <ion-scroll>
@@ -12,13 +13,15 @@
         <ion-item class="stable-bg history-list-group" ng-repeat="(key, value) in vm.history | groupBy: 'date'">
           <span class="history-list-group-label">{{ key }}</span>
           <ion-list>
-            <ion-item class="item item-icon-left" data-ng-repeat="deposit in value | filter:vm.listFilter"   href="#/app/history/{{deposit.id}}">
-              <span class="item-note">{{deposit.checks.length}}</span>
+            <ion-item class="item item-icon-left item-icon-right" data-ng-repeat="deposit in value | filter:vm.listFilter"   href="#/app/history/{{deposit.id}}">
               <i class="icon" data-ng-class="{'ion-ios-checkmark-outline balanced': deposit.status === 'APPROVE', 'ion-ios-close-outline dark-red': deposit.status === 'REJECT', 'ion-ios-time-outline': deposit.status === 'RELEASE' }"></i>
-              <h4>{{deposit.date}} | {{deposit.time}}</h4>
-              <h4>Deposit Amount: <span class="gray">${{deposit.amount}}</span></h4>
-              <h4>Account: <span class="gray">{{deposit.account}}</span></h4>
-              <h4>Status: <span class="gray">{{deposit.status}}</span></h4>
+              <h2>{{deposit.date}} | {{deposit.time}}</h2>
+              <h3>Deposit Amount:
+                <span class="gray">${{deposit.amount}}</span>
+                <span class="item-note">{{deposit.checks.length}}</span>
+              </h3>
+              <h3>Account: <span class="gray">{{deposit.account}}</span></h3>
+              <i class="icon ion-ios-arrow-right"></i>
             </ion-item>
           </ion-list>
         </ion-item>

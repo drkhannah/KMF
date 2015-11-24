@@ -2,33 +2,42 @@
   <ion-nav-buttons side="right">
     <button ng-hide="vm.status !== 'REJECT'" class="button button-icon button-clear ion-loop" data-ng-click="vm.resubmitDeposit(vm.deposit)"></button>
   </ion-nav-buttons>
-  <ion-content scroll="false">
-    <!-- View Banner -->
-    <div>
-      <h4>Account:
-        <span class="detail-info">{{vm.account}}</span>
-      </h4>
-      <h4>Deposit Amount:
-        <span class="detail-info">{{vm.depositAmount}}</span>
-      </h4>
-      <h4>Status:
-        <span class="detail-info">{{vm.status}}</span>
-      </h4>
-      <h4>Description:
-        <span class="detail-info">{{vm.description}}</span>
-      </h4>
+  <ion-content>
+    <div class="list list-inset">
+      <!-- View Banner -->
+      <div class="item item-divider">Details</div>
+      <div class="item item-icon-right" ng-class="{'dark-red-bg light': vm.status === 'REJECT', 'balanced-bg light': vm.status === 'APPROVE' , 'light-bg': vm.status === 'RELEASE'}">
+        <i class="icon" data-ng-class="{'ion-ios-checkmark-outline ': vm.status === 'APPROVE', 'ion-ios-close-outline': vm.status === 'REJECT', 'ion-ios-time-outline': vm.status === 'RELEASE' }"></i>
+        {{vm.date}} | {{vm.time}}
+      </div>
+      <div class="item">
+        Account <span class="gray right">{{vm.account}}</span>
+      </div>
+      <div class="item">
+        Total Deposit Amount <span class="gray right">{{vm.depositAmount | currency}}</span>
+      </div>
+      <div class="item">
+        Status: <span class="gray right">{{vm.status}}</span>
+      </div>
+      <div class="item item-text-wrap">
+        Description<br>
+        <span class="gray">{{vm.description}}</span>
+      </div>
+      <div class="item item-divider">Transactions</div>
+
+      <!-- Deposit Checks List -->
+      <ion-scroll>
+        <ion-list>
+          <ion-item class="item-icon-right" data-ng-repeat="check in vm.checks" data-ng-click="vm.showImages($index)">
+            <!--<img data-ng-src="{{check.checkFrontImage}}" />-->
+            <i class="icon ion-ios-arrow-right"></i>
+            <!--<h2>{{check.id}}</h2>-->
+            <h2>Transaction Id: <span class="gray">{{check.number}}</span></h2>
+            <h2>Account: <span class="gray">{{check.checkAmount | currency}}</span></h2>
+            <!--<h4>{{check.ts}}</h4>-->
+          </ion-item>
+        </ion-list>
+      </ion-scroll>
     </div>
-    <!-- Deposit Checks List -->
-    <ion-scroll>
-      <ion-list>
-        <ion-item class="item item-thumbnail-right" data-ng-repeat="check in vm.checks" data-ng-click="vm.showImages($index)">
-          <img class="check-thumbnail" data-ng-src="{{check.checkFrontImage}}" />
-          <h2>{{check.id}}</h2>
-          <h4>{{check.number}}</h4>
-          <h4>{{check.amount | currency}}</h4>
-          <h4>{{check.ts}}</h4>
-        </ion-item>
-      </ion-list>
-    </ion-scroll>
   </ion-content>
 </ion-view>

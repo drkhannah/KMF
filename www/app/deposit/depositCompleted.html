@@ -1,14 +1,16 @@
-<ion-view hide-back-button="true"  can-swipe-back="false" view-title="{{vm.title}}">
-    <ion-content>
-        <!-- Complete Deposit Card -->
-        <div class="card">
-            <div class="item item-text-wrap">
-                Deposit Completed.
+<ion-view hide-nav-bar="true" can-swipe-back="false" view-title="{{vm.title}}">
+        <ion-content scroll="false">
+            <div class="deposit-complete light text-center" data-ng-class="{'balanced-bg': vm.completed, 'dark-red-bg': !vm.completed}">
+            <i class="icon" data-ng-class="{'ion-ios-checkmark-outline': vm.completed, 'ion-ios-close-outline': !vm.completed}"></i>
+                <h3 class="light">
+                    <span ng-show="vm.completed">Your Check Deposit <br> was a Success!</span>
+                    <span ng-show="!vm.completed">Your Check Deposit <br> Failed!</span>
+                </h3>
             </div>
-        </div>
-        <!-- Make Another Deposit Button -->
-        <button class="button button-full button-positive" data-ng-click="vm.anotherDeposit()">
-            Make Another Deposit
-        </button>
-    </ion-content>
+        </ion-content>
+    <!-- Footer -->
+    <div class="bar bar-footer stacked-footer balanced-bg no-background-img" data-ng-class="{'balanced-bg': vm.completed, 'dark-red-bg': !vm.completed}">
+        <a class="light-bg light-border" data-ng-class="{'balanced': vm.completed, 'dark-red': !vm.completed}" data-ng-click="vm.anotherDeposit()">Make Another Deposit</a>
+        <a class="light light-border" data-ng-class="{'balanced-bg': vm.completed, 'dark-red-bg': !vm.completed}" data-ng-click="vm.toggleLeftSideMenu()">Menu</a>
+    </div>
 </ion-view>

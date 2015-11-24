@@ -7,7 +7,7 @@
         .controller('DepositCompletedController', DepositCompletedController);
 
     stateProvider.$inject = ['$stateProvider'];
-    DepositCompletedController.$inject = ['depositService', '$state', '$ionicHistory'];
+    DepositCompletedController.$inject = ['depositService', '$state', '$ionicHistory', '$ionicSideMenuDelegate'];
 
     /* @ngInject */
     function stateProvider($stateProvider){
@@ -24,14 +24,16 @@
     }
 
     /* @ngInject */
-    function DepositCompletedController(depositService, $state, $ionicHistory) {
+    function DepositCompletedController(depositService, $state, $ionicHistory, $ionicSideMenuDelegate) {
         /* jshint validthis: true */
         var vm = this;
 
 
         vm.activate = activate;
         vm.anotherDeposit = anotherDeposit;
+        vm.toggleLeftSideMenu = toggleLeftSideMenu
         vm.title = 'Deposit Completed';
+        vm.completed = true;
 
 
         activate();
@@ -66,6 +68,11 @@
             };
 
             console.log ('depositService Object: ' + angular.toJson(depositService));
+        }
+
+        //toggle left nav
+        function toggleLeftSideMenu(){
+            $ionicSideMenuDelegate.toggleLeft();
         }
 
     }

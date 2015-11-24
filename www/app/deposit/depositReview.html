@@ -4,7 +4,7 @@
     </ion-nav-buttons>
     <ion-content>
         <form name="vm.depositReviewForm" novalidate>
-            <div class="list">
+            <div class="list list-inset deposit-review-details">
                 <div class="item item-divider">
                     Summary
                 </div>
@@ -40,7 +40,7 @@
                     Totals Match
                 </div>
 
-                <!-- Submitted Checks List -->
+                <!-- item divider -->
                 <div class="item item-divider" data-ng-show="vm.depositObj.type === 'SINGLE'">
                     Check
                     <a class="right" data-ng-click="vm.editClick()">{{vm.editToggle}}</a>
@@ -49,15 +49,18 @@
                     Saved Checks
                     <a class="right" data-ng-click="vm.editClick()">{{vm.editToggle}}</a>
                 </div>
-                <ion-list show-delete="vm.shouldShowDelete">
-                    <ion-item class="item item-thumbnail-right" data-ng-repeat="check in vm.checks">
-                        <h4>{{check.checkAmount | currency}}</h4>
-                        <img class="check-thumbnail-deposit-review" data-ng-src="{{check.checkFrontImage}}">
-                        <ion-delete-button data-ng-show="vm.depositObj.type === 'MULTIPLE'" class="button-positive ion-minus-circled" data-ng-click="vm.deleteCheck($index)"></ion-delete-button>
-                        <ion-option-button class="button-assertive" data-ng-click="vm.retake(check, vm.selectedAccount)">Retake</ion-option-button>
 
-                    </ion-item>
-                </ion-list>
+                <!-- Submitted Checks List -->
+                <ion-scroll>
+                    <ion-list show-delete="vm.shouldShowDelete">
+                        <ion-item class="item item-thumbnail-right" data-ng-repeat="check in vm.checks">
+                            <h4>{{check.checkAmount | currency}}</h4>
+                            <img class="check-thumbnail-deposit-review" data-ng-src="{{check.checkFrontImage}}">
+                            <ion-delete-button data-ng-show="vm.depositObj.type === 'MULTIPLE'" class="button-positive ion-minus-circled" data-ng-click="vm.deleteCheck($index)"></ion-delete-button>
+                            <ion-option-button class="button-assertive" data-ng-click="vm.retake(check, vm.selectedAccount)">Retake</ion-option-button>
+                        </ion-item>
+                    </ion-list>
+                </ion-scroll>
             </div>
         </form>
     </ion-content>

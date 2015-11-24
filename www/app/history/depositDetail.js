@@ -41,8 +41,10 @@
         vm.title = 'HistoryDetail';
         vm.deposit = historyDetailPromise;
         vm.id = historyDetailPromise.id;
+        vm.date = historyDetailPromise.date;
+        vm.time = historyDetailPromise.time;
         vm.account = historyDetailPromise.account;
-        vm.depositAmount = historyDetailPromise.amount;
+        vm.depositAmount = historyDetailPromise.depositAmount;
         vm.status = historyDetailPromise.status;
         vm.description = historyDetailPromise.description;
         vm.checks = historyDetailPromise.checks;
