@@ -6,7 +6,7 @@
     <div class="list list-inset">
       <!-- View Banner -->
       <div class="item item-divider">Details</div>
-      <div class="item item-icon-right" ng-class="{'dark-red-bg light': vm.status === 'REJECT', 'balanced-bg light': vm.status === 'APPROVE' , 'light-bg': vm.status === 'RELEASE'}">
+      <div class="item item-icon-right" ng-class="{'dark-red-bg light': vm.status === 'REJECT', 'balanced-bg light': vm.status === 'APPROVE' , 'light-gray-bg': vm.status === 'RELEASE'}">
         <i class="icon" data-ng-class="{'ion-ios-checkmark-outline ': vm.status === 'APPROVE', 'ion-ios-close-outline': vm.status === 'REJECT', 'ion-ios-time-outline': vm.status === 'RELEASE' }"></i>
         {{vm.date}} | {{vm.time}}
       </div>

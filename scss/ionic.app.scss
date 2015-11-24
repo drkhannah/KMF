@@ -64,6 +64,10 @@ input[ng-currency], input[data-ng-currency]{
   color: gray !important;
 }
 
+.light-gray-bg {
+  background-color: $lightGray !important;
+}
+
 .dark-red-bg {
   background-color: $darkRed !important;
 }
@@ -331,6 +335,28 @@ div.totals-match{
 .history-detail-list{
   margin-bottom: 0;
   border:none;
+}
+
+//
+// Review view
+
+.review-filter-tabs {
+  .tabs {
+    position: relative;
+    top: 0;
+  }
+  a{
+    border-right: solid 1px $lightGray;
+    border-top: solid 1px $lightGray;
+  }
+}
+
+.review-filter-tabs .tabs .tab-item-active{
+  background-color: $lightGray;
+}
+
+.review-filter-tabs .tabs .tab-item:last-child{
+  border-right:none;
 }
 
 

@@ -50,7 +50,7 @@
             if(!signinService.access){
                 $state.go('signin');
             } else {
-                $state.go('app.history')
+                $state.go('app.review')
             }
         }
 

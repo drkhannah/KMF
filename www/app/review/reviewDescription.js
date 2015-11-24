@@ -37,7 +37,7 @@
         vm.activate = activate;
         vm.submitStatus = submitStatus;
         vm.descriptionChange = descriptionChange;
-        vm.title = 'Status Description';
+        vm.title = 'Description';
         vm.status = reviewedDeposit.status;
         vm.description = reviewedDeposit.description;
         activate();

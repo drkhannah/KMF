@@ -21,7 +21,7 @@
 
         function getDeposits() {
             var defer = $q.defer();
-            $http.get('data/history.json')
+            $http.get('data/depositsToReview.json')
                 .success(function (data) {
                     defer.resolve(data);
                 })
@@ -33,7 +33,7 @@
 
         function getReviewDetail(id) {
             var defer = $q.defer();
-            $http.get('data/historyDetail' + id + '.json')
+            $http.get('data/depositsToReview' + id + '.json')
                 .success(function (data) {
                     defer.resolve(data);
                 }).error(function(error){

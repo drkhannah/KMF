@@ -1,17 +1,29 @@
 <ion-view view-title="{{vm.title}}">
-  <ion-content>
+  <ion-content scroll="false">
+    <!--Filter Tabs-->
+    <ion-tabs class="tabs-top tabs-light tabs-icon-only review-filter-tabs">
+      <ion-tab title="Newest" on-select="vm.reverseOrder = false"></ion-tab>
+      <ion-tab title="Oldest" on-select="vm.reverseOrder = true"></ion-tab>
+    </ion-tabs>
     <!-- Deposits List -->
-    <ion-list>
-      <ion-item class="item item-icon-right" data-ng-repeat="deposit in vm.deposits"  data-ui-sref="app.review-detail( {id: deposit.id} )">
-        <i class="icon" data-ng-class="{'ion-thumbsup': deposit.status === 'APPROVE',
-        'ion-thumbsdown': deposit.status === 'REJECT',
-        'ion-android-hand': deposit.status === 'RELEASE' }">
-        </i>
-        <h2>{{deposit.date}}</h2>
-        <h4>{{deposit.amount}}</h4>
-        <h4>{{deposit.time}}</h4>
-        <h4>{{deposit.account}}</h4>
-      </ion-item>
-    </ion-list>
+    <ion-scroll>
+      <ion-list class="history-list">
+        <ion-item class="stable-bg history-list-group" ng-repeat="(key, value) in vm.deposits | groupBy: 'date'" >
+          <span class="history-list-group-label">{{ key }}</span>
+          <ion-list>
+            <ion-item class="item item-icon-left item-icon-right" data-ng-repeat="deposit in value | orderBy:'deposit.date':false"   href="#/app/review/{{deposit.id}}">
+              <i class="icon" data-ng-class="{'ion-ios-checkmark-outline balanced': deposit.status === 'APPROVE', 'ion-ios-close-outline dark-red': deposit.status === 'REJECT', 'ion-ios-time-outline': deposit.status === 'RELEASE' }"></i>
+              <h2>{{deposit.date}} | {{deposit.time}}</h2>
+              <h3>Deposit Amount:
+                <span class="gray">${{deposit.amount}}</span>
+                <span class="item-note">{{deposit.checks.length}}</span>
+              </h3>
+              <h3>Account: <span class="gray">{{deposit.account}}</span></h3>
+              <i class="icon ion-ios-arrow-right"></i>
+            </ion-item>
+          </ion-list>
+        </ion-item>
+      </ion-list>
+    </ion-scroll>
   </ion-content>
 </ion-view>

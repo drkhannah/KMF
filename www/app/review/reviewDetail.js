@@ -42,11 +42,13 @@
         vm.deposit = reviewDetailPromise;
         vm.id = reviewDetailPromise.id;
         vm.account = reviewDetailPromise.account;
-        vm.depositAmount = reviewDetailPromise.amount;
+        vm.depositAmount = reviewDetailPromise.depositAmount;
         vm.status = reviewDetailPromise.status;
         vm.description = reviewDetailPromise.description;
         vm.checks = reviewDetailPromise.checks;
         vm.checkIndex = null;
+        vm.time = reviewDetailPromise.time;
+        vm.date = reviewDetailPromise.date;
         vm.reject = 'REJECT';
         vm.release = 'RELEASE';
         vm.approve = 'APPROVE';

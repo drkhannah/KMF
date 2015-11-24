@@ -9106,6 +9106,9 @@ input[ng-currency], input[data-ng-currency] {
 .gray {
   color: gray !important; }
 
+.light-gray-bg {
+  background-color: #DDDDDD !important; }
+
 .dark-red-bg {
   background-color: #9D1C23 !important; }
 
@@ -9277,3 +9280,17 @@ div.totals-match {
 .history-detail-list {
   margin-bottom: 0;
   border: none; }
+
+.review-filter-tabs .tabs {
+  position: relative;
+  top: 0; }
+
+.review-filter-tabs a {
+  border-right: solid 1px #DDDDDD;
+  border-top: solid 1px #DDDDDD; }
+
+.review-filter-tabs .tabs .tab-item-active {
+  background-color: #DDDDDD; }
+
+.review-filter-tabs .tabs .tab-item:last-child {
+  border-right: none; }
