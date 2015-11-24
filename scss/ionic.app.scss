@@ -40,6 +40,10 @@ input[ng-currency], input[data-ng-currency]{
   color: $darkRed !important;
 }
 
+.gray {
+  color: gray !important;
+}
+
 .dark-red-bg {
   background-color: $darkRed !important;
 }
@@ -265,6 +269,24 @@ div.totals-match{
 .history-filter-tabs .tabs:last-child{
   border:none;
 }
+
+.history-list{
+  border: none;
+  .item{
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.history-list-group{
+  border:none;
+  .history-list-group-label{
+    margin: 10px;
+    font-weight: bold;
+  }
+}
+
+
 
 
 

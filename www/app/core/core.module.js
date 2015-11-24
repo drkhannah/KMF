@@ -5,6 +5,7 @@
         /* Ionic/Angular modules*/
         'ionic',
         'ngMessages',
+        'angular.filter',
 
 
         /* 3rd party modules*/
