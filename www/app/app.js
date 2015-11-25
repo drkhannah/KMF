@@ -3,11 +3,9 @@
 
     angular
         .module('app')
-        .run(appRun)
-        .factory('MFPClientPromise', MFPClientPromise);
+        .run(appRun);
 
     appRun.$inject = [ '$ionicPlatform', '$rootScope','MFPClientPromise' ];
-    MFPClientPromise.$inject = ['$q'];
 
     window.Messages = {
         // Add here your messages for the default language.
@@ -45,7 +43,7 @@
 
             MFPClientPromise.then(function(){
                 WL.Logger.ctx({pkg: 'io.ionic'}).debug('mfp and ionic are ready, safe to use WL.* APIs');
-                WL.Client.connect();
+                //WL.Client.connect();
             });
 
             //listen for state change errors
@@ -56,13 +54,6 @@
                         + angular.toJson(fromState) + ' fromParams:' + angular.toJson(fromParams) + ' Error:' + error);
                 });
         });
-    }
-
-    function MFPClientPromise($q){
-        /* Setup a Promise to allow code to run in other places anytime after MFP CLient SDK is ready
-         Example: MFPClientPromise.then(function(){alert('mfp is ready, go ahead and use WL.* APIs')});
-         */
-        return window.MFPClientDefer.promise;
     }
 
     function mfpMagicPreviewSetup(){

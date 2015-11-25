@@ -254,15 +254,22 @@ a[data-ng-click="vm.signin()"]{
   .tab-item{
     max-width: none;
     margin: 0 !important;
-  }
-  .tab-item:last-child{
-    border:none;
+    border-bottom: 1px solid $lightGray !important;
   }
   .tab-item-active{
     border-top: solid 2px $positive !important;
     background-color: $stable !important;
+    border-bottom: none !important;
   }
+}
 
+//override ionic tab borders because of problem on android
+.tabs-striped .tabs{
+  border-bottom:none;
+}
+.tabs-top.tabs-striped .tab-item.activated, .tabs-top.tabs-striped .tab-item.tab-item-active, .tabs-top.tabs-striped .tab-item.active, .tabs-top.tabs-striped .tab-item.activated{
+  border-width: 2px 0 0 0 !important;
+  border-color: $positive !important;
 }
 
 

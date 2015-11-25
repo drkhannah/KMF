@@ -9225,12 +9225,19 @@ a[data-ng-click="vm.signin()"] i {
   top: 0 !important; }
   .filter-tabs .tabs .tab-item {
     max-width: none;
-    margin: 0 !important; }
-  .filter-tabs .tabs .tab-item:last-child {
-    border: none; }
+    margin: 0 !important;
+    border-bottom: 1px solid #DDDDDD !important; }
   .filter-tabs .tabs .tab-item-active {
     border-top: solid 2px #CC0000 !important;
-    background-color: #f8f8f8 !important; }
+    background-color: #f8f8f8 !important;
+    border-bottom: none !important; }
+
+.tabs-striped .tabs {
+  border-bottom: none; }
+
+.tabs-top.tabs-striped .tab-item.activated, .tabs-top.tabs-striped .tab-item.tab-item-active, .tabs-top.tabs-striped .tab-item.active, .tabs-top.tabs-striped .tab-item.activated {
+  border-width: 2px 0 0 0 !important;
+  border-color: #CC0000 !important; }
 
 i.icon-make-deposit {
   font-size: 110px; }

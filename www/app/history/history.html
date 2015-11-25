@@ -1,11 +1,11 @@
 <ion-view view-title="{{vm.title}}">
   <ion-content scroll="false">
     <!--Filter Tabs-->
-    <ion-tabs class="tabs-top tabs-light tabs-icon-only filter-tabs">
+    <ion-tabs class="tabs-top tabs-light filter-tabs">
       <ion-tab title="Recent" on-select="vm.listFilter = {orderBy:date}"></ion-tab>
-      <ion-tab title="Approved" on-select="vm.listFilter = 'APPROVE'"></ion-tab>
-      <ion-tab title="Rejected" on-select="vm.listFilter = 'REJECT'"></ion-tab>
-      <ion-tab title="Released" on-select="vm.listFilter = 'RELEASE'"></ion-tab>
+      <ion-tab title="Approved" icon-on="ion-ios-checkmark-outline balanced" on-select="vm.listFilter = 'APPROVE'"></ion-tab>
+      <ion-tab title="Rejected" icon-on="ion-ios-close-outline dark-red" on-select="vm.listFilter = 'REJECT'"></ion-tab>
+      <ion-tab title="Released" icon-on="ion-ios-time-outline" on-select="vm.listFilter = 'RELEASE'"></ion-tab>
     </ion-tabs>
     <!-- Deposits List -->
     <ion-scroll>
