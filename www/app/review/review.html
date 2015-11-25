@@ -1,15 +1,15 @@
 <ion-view view-title="{{vm.title}}">
   <ion-content scroll="false">
     <!--Filter Tabs-->
-    <ion-tabs class="tabs-top tabs-light tabs-icon-only review-filter-tabs">
+    <ion-tabs class="tabs-top tabs-light tabs-icon-only filter-tabs">
       <ion-tab title="Newest" on-select="vm.reverseOrder = false"></ion-tab>
       <ion-tab title="Oldest" on-select="vm.reverseOrder = true"></ion-tab>
     </ion-tabs>
     <!-- Deposits List -->
     <ion-scroll>
-      <ion-list class="history-list">
-        <ion-item class="stable-bg history-list-group" ng-repeat="(key, value) in vm.deposits | groupBy: 'date'" >
-          <span class="history-list-group-label">{{ key }}</span>
+      <ion-list class="gbd-list">
+        <ion-item class="stable-bg gbd-list-group" ng-repeat="(key, value) in vm.deposits | groupBy: 'date'" >
+          <span class="gbd-list-group-label">{{ key }}</span>
           <ion-list>
             <ion-item class="item item-icon-left item-icon-right" data-ng-repeat="deposit in value | orderBy:'deposit.date':false"   href="#/app/review/{{deposit.id}}">
               <i class="icon" data-ng-class="{'ion-ios-checkmark-outline balanced': deposit.status === 'APPROVE', 'ion-ios-close-outline dark-red': deposit.status === 'REJECT', 'ion-ios-time-outline': deposit.status === 'RELEASE' }"></i>

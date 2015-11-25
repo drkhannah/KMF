@@ -34,7 +34,7 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.sass, ['sass', 'mfp push']);
 });
 
 gulp.task('install', ['git-check'], function() {

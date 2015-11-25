@@ -9158,6 +9158,21 @@ img.capture-check-thumbnail {
 .pane, .view {
   background-color: #f8f8f8; }
 
+.gbd-list {
+  border: none; }
+  .gbd-list h2 {
+    margin-bottom: 7px; }
+  .gbd-list .item {
+    border-left: none;
+    border-right: none; }
+
+.gbd-list-group {
+  border: none;
+  padding-bottom: 0; }
+  .gbd-list-group .gbd-list-group-label {
+    margin: 10px;
+    font-weight: bold; }
+
 .stacked-footer {
   height: auto;
   display: block; }
@@ -9205,6 +9220,18 @@ a[data-ng-click="vm.signin()"] i {
   .menu-list .item:first-child {
     border-top-style: none; }
 
+.filter-tabs .tabs {
+  position: relative;
+  top: 0 !important; }
+  .filter-tabs .tabs .tab-item {
+    max-width: none;
+    margin: 0 !important; }
+  .filter-tabs .tabs .tab-item:last-child {
+    border: none; }
+  .filter-tabs .tabs .tab-item-active {
+    border-top: solid 2px #CC0000 !important;
+    background-color: #f8f8f8 !important; }
+
 i.icon-make-deposit {
   font-size: 110px; }
 
@@ -9249,48 +9276,6 @@ div.totals-match {
     display: block;
     font-size: 100px; }
 
-.history-filter-tabs .tabs {
-  position: relative;
-  top: 0; }
-  .history-filter-tabs .tabs a {
-    border-right: solid 1px #DDDDDD;
-    border-top: solid 1px #DDDDDD; }
-
-.history-filter-tabs .tabs .tab-item-active {
-  background-color: #DDDDDD; }
-
-.history-filter-tabs .tabs:last-child {
-  border: none; }
-
-.history-list {
-  border: none; }
-  .history-list h2 {
-    margin-bottom: 7px; }
-  .history-list .item {
-    border-left: none;
-    border-right: none; }
-
-.history-list-group {
-  border: none;
-  padding-bottom: 0; }
-  .history-list-group .history-list-group-label {
-    margin: 10px;
-    font-weight: bold; }
-
 .history-detail-list {
   margin-bottom: 0;
   border: none; }
-
-.review-filter-tabs .tabs {
-  position: relative;
-  top: 0; }
-
-.review-filter-tabs a {
-  border-right: solid 1px #DDDDDD;
-  border-top: solid 1px #DDDDDD; }
-
-.review-filter-tabs .tabs .tab-item-active {
-  background-color: #DDDDDD; }
-
-.review-filter-tabs .tabs .tab-item:last-child {
-  border-right: none; }

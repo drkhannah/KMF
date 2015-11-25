@@ -137,6 +137,32 @@ img.capture-check-thumbnail {
 }
 
 //
+// global list styles
+//
+.gbd-list{
+  border: none;
+
+  h2{
+    margin-bottom: 7px;
+  }
+
+  .item{
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.gbd-list-group{
+  border:none;
+  padding-bottom:0;
+  .gbd-list-group-label{
+    margin: 10px;
+    font-weight: bold;
+  }
+}
+
+
+//
 // Stacked footer
 //
 .stacked-footer{
@@ -221,6 +247,26 @@ a[data-ng-click="vm.signin()"]{
 }
 
 //
+//filter tabs styles
+.filter-tabs .tabs{
+  position: relative;
+  top: 0 !important;
+  .tab-item{
+    max-width: none;
+    margin: 0 !important;
+  }
+  .tab-item:last-child{
+    border:none;
+  }
+  .tab-item-active{
+    border-top: solid 2px $positive !important;
+    background-color: $stable !important;
+  }
+
+}
+
+
+//
 //Deposit view styles
 //
 i.icon-make-deposit{
@@ -292,46 +338,6 @@ div.totals-match{
 //History view styles
 //
 
-.history-filter-tabs .tabs{
-  position: relative;
-  top: 0;
-  a{
-    border-right: solid 1px $lightGray;
-    border-top: solid 1px $lightGray;
-
-  }
-}
-
-.history-filter-tabs .tabs .tab-item-active{
-  background-color: $lightGray;
-}
-
-.history-filter-tabs .tabs:last-child{
-  border:none;
-}
-
-.history-list{
-  border: none;
-
-  h2{
-    margin-bottom: 7px;
-  }
-
-  .item{
-    border-left: none;
-    border-right: none;
-  }
-}
-
-.history-list-group{
-  border:none;
-  padding-bottom:0;
-  .history-list-group-label{
-    margin: 10px;
-    font-weight: bold;
-  }
-}
-
 .history-detail-list{
   margin-bottom: 0;
   border:none;
@@ -340,24 +346,6 @@ div.totals-match{
 //
 // Review view
 
-.review-filter-tabs {
-  .tabs {
-    position: relative;
-    top: 0;
-  }
-  a{
-    border-right: solid 1px $lightGray;
-    border-top: solid 1px $lightGray;
-  }
-}
-
-.review-filter-tabs .tabs .tab-item-active{
-  background-color: $lightGray;
-}
-
-.review-filter-tabs .tabs .tab-item:last-child{
-  border-right:none;
-}
 
 
 
