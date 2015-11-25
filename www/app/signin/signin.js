@@ -33,7 +33,6 @@
         vm.appName = 'KTT Mobile Deposit';
         vm.username = signinService.username;
         vm.password = signinService.password;
-        vm.signinForm;
 
         activate();
 
@@ -46,7 +45,7 @@
         function signin($error){
             if(Object.keys($error).length >= 1){
                 errorToastService.errorToast($error);
-            } else if(signinService.username === 'admin' && signinService.password === 'admin') {
+            } else {
                 signinService.signin().then(function () {
                     signinService.namePass = true;
                     $ionicHistory.nextViewOptions({
@@ -54,9 +53,9 @@
                     });
                     $ionicHistory.clearCache();
                     $state.go('securityQuestions');
+                }, function(res){
+                    errorToastService.errorToast('Credentials were bad');
                 })
-            } else {
-                errorToastService.errorToast('Username or Password Incorrect');
             }
         }
 
